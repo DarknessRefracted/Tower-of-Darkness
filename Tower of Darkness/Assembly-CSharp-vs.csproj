@@ -39,22 +39,26 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Character\Scripts\AdjAgentSensor.cs" />
      <Compile Include="Assets\Character\Scripts\CharController.cs" />
      <Compile Include="Assets\Character\Scripts\CharController2.cs" />
+     <Compile Include="Assets\Character\Scripts\ForwardSensor.cs" />
      <Compile Include="Assets\Character\Scripts\SmoothFollow2.cs" />
      <Compile Include="Assets\Character\Scripts\SubjectController3.cs" />
+     <Compile Include="Assets\Character\Scripts\WallSensors.cs" />
+     <Compile Include="Assets\Tower\RemoveGravity.cs" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>D:/GitHub/Tower-of-Darkness/Tower of Darkness/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>C:/Users/Kevin Strileckis/Desktop/Tower-of-Darkness/Tower of Darkness/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
