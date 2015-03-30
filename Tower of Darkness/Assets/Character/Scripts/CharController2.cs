@@ -4,9 +4,9 @@ using System.Collections;
 public class CharController2 : MonoBehaviour {
 	private bool grounded = true;
 	private bool candoublejump = true;
-	public float jumpForce= 50f;
+	public float jumpForce= 200f;
 	public Rigidbody2D rigidbody2d;
-	public float jumpCooldown = 0.21f;
+	public float jumpCooldown = 0.1f;
 	public float speed = 5f;
 	private float move;
 	void Start(){
@@ -21,13 +21,13 @@ public class CharController2 : MonoBehaviour {
 	void FixedUpdate(){
 		move = Input.GetAxis ("Horizontal");
 		rigidbody2D.velocity = new Vector2 (move * speed, rigidbody2D.velocity.y);
-				if (Input.GetKeyUp (KeyCode.W)) {
+		if (Input.GetKeyUp (KeyCode.Space)) {
 						if (grounded) {
 								rigidbody2d.velocity = new Vector2 (rigidbody2D.velocity.x, 0);
 								rigidbody2d.AddForce (new Vector2 (0, jumpForce));
 								grounded = false;
 								candoublejump = true;
-								jumpCooldown = 0.2f;
+								jumpCooldown = 0.1f;
 						} else if( jumpCooldown < 0) {
 								if (candoublejump) {
 										candoublejump = false;
@@ -38,6 +38,10 @@ public class CharController2 : MonoBehaviour {
 				}
 		}
 	void OnTriggerEnter2D(Collider2D other) {
+		grounded = true;
+	}
+
+	void OnCollisionEnter2D(Collision2D other) {
 		grounded = true;
 	}
 }
