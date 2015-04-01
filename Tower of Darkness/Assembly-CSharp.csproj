@@ -46,23 +46,18 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Character\Scripts\AdjAgentSensor.cs" />
-     <Compile Include="Assets\Character\Scripts\CharController.cs" />
-     <Compile Include="Assets\Character\Scripts\CharController2.cs" />
-     <Compile Include="Assets\Character\Scripts\ForwardSensor.cs" />
-     <Compile Include="Assets\Character\Scripts\SmoothFollow2.cs" />
-     <Compile Include="Assets\Character\Scripts\SubjectController3.cs" />
-     <Compile Include="Assets\Character\Scripts\WallSensors.cs" />
-     <Compile Include="Assets\Tower\RemoveGravity.cs" />
+     <Compile Include="Assets\Scripts\Backup\AdjAgentSensor.cs" />
+     <Compile Include="Assets\Scripts\Backup\CharControllerOrig.cs" />
+     <Compile Include="Assets\Scripts\Backup\ForwardSensor.cs" />
+     <Compile Include="Assets\Scripts\Backup\SmoothFollow-backup.cs" />
+     <Compile Include="Assets\Scripts\Backup\SubjectController3.cs" />
+     <Compile Include="Assets\Scripts\Backup\WallSensors.cs" />
+     <Compile Include="Assets\Scripts\CharController.cs" />
+     <Compile Include="Assets\Scripts\SmoothFollow.cs" />
+     <Compile Include="Assets\Sprites\Tower\RemoveGravity.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{179F790E-6EDF-C5BF-F076-7CFB5E90E1A8}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
-    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
-      <Project>{3994B337-B1FC-0F41-69B3-B27F5A6134EE}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
