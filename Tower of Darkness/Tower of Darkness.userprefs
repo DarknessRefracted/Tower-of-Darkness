@@ -1,11 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Backup\SmoothFollow-backup.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LevelGenerator.cs">
     <Files>
-      <File FileName="Assets\Scripts\SmoothFollow.cs" Line="23" Column="3" />
-      <File FileName="d:\GitHub\Tower-of-Darkness\Tower of Darkness\Assets\Scripts\CharController.cs" Line="4" Column="14" />
-      <File FileName="Assets\Scripts\Backup\CharControllerOrig.cs" Line="21" Column="17" />
-      <File FileName="Assets\Scripts\Backup\SmoothFollow-backup.cs" Line="12" Column="18" />
+      <File FileName="Assets\Scripts\LevelGenerator.cs" Line="67" Column="85" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
