@@ -1,8 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LevelGenerator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SmoothFollow.cs">
     <Files>
-      <File FileName="Assets\Scripts\LevelGenerator.cs" Line="67" Column="85" />
+      <File FileName="Assets\Scripts\SmoothFollow.cs" Line="4" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

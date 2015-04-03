@@ -1,0 +1,212 @@
+fileFormatVersion: 2
+guid: 68c28f81a9bfbda4ca0d8d95bdbf5580
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Igor's char base new transp (alina iluss) high res_0
+    21300002: Igor's char base new transp (alina iluss) high res_1
+    21300004: Igor's char base new transp (alina iluss) high res_2
+    21300006: Igor's char base new transp (alina iluss) high res_3
+    21300008: Igor's char base new transp (alina iluss) high res_4
+    21300010: Igor's char base new transp (alina iluss) high res_5
+    21300012: Igor's char base new transp (alina iluss) high res_6
+    21300014: Igor's char base new transp (alina iluss) high res_7
+    21300016: Igor's char base new transp (alina iluss) high res_8
+    21300018: Igor's char base new transp (alina iluss) high res_9
+    21300020: Igor's char base new transp (alina iluss) high res_10
+    21300022: Igor's char base new transp (alina iluss) high res_11
+    21300024: Igor's char base new transp (alina iluss) high res_12
+    21300026: Igor's char base new transp (alina iluss) high res_13
+    21300028: Igor's char base new transp (alina iluss) high res_14
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -2
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 1200, y: 600, z: 1000, w: 600}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Igor's char base new transp (alina iluss) high res_0
+      rect:
+        serializedVersion: 2
+        x: 1374
+        y: 3638
+        width: 734
+        height: 1025
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Igor's char base new transp (alina iluss) high res_1
+      rect:
+        serializedVersion: 2
+        x: 2329
+        y: 3524
+        width: 770
+        height: 1172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Igor's char base new transp (alina iluss) high res_2
+      rect:
+        serializedVersion: 2
+        x: 3251
+        y: 3536
+        width: 770
+        height: 1170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Igor's char base new transp (alina iluss) high res_3
+      rect:
+        serializedVersion: 2
+        x: 4247
+        y: 3839
+        width: 1172
+        height: 769
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Igor's char base new transp (alina iluss) high res_4
+      rect:
+        serializedVersion: 2
+        x: 5478
+        y: 3839
+        width: 1169
+        height: 769
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Igor's char base new transp (alina iluss) high res_5
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 2239
+        width: 619
+        height: 1055
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Igor's char base new transp (alina iluss) high res_6
+      rect:
+        serializedVersion: 2
+        x: 2060
+        y: 2243
+        width: 621
+        height: 1051
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Igor's char base new transp (alina iluss) high res_7
+      rect:
+        serializedVersion: 2
+        x: 2774
+        y: 2243
+        width: 620
+        height: 1051
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Igor's char base new transp (alina iluss) high res_8
+      rect:
+        serializedVersion: 2
+        x: 3583
+        y: 2210
+        width: 650
+        height: 1084
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Igor's char base new transp (alina iluss) high res_9
+      rect:
+        serializedVersion: 2
+        x: 4403
+        y: 2085
+        width: 621
+        height: 992
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Igor's char base new transp (alina iluss) high res_10
+      rect:
+        serializedVersion: 2
+        x: 1392
+        y: 950
+        width: 621
+        height: 1053
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Igor's char base new transp (alina iluss) high res_11
+      rect:
+        serializedVersion: 2
+        x: 2105
+        y: 950
+        width: 621
+        height: 1053
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Igor's char base new transp (alina iluss) high res_12
+      rect:
+        serializedVersion: 2
+        x: 2806
+        y: 948
+        width: 621
+        height: 1055
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Igor's char base new transp (alina iluss) high res_13
+      rect:
+        serializedVersion: 2
+        x: 3495
+        y: 786
+        width: 621
+        height: 992
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Igor's char base new transp (alina iluss) high res_14
+      rect:
+        serializedVersion: 2
+        x: 4284
+        y: 911
+        width: 651
+        height: 1084
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: Player
+  userData: 
