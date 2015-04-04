@@ -87,6 +87,7 @@ public class LevelGenerator : MonoBehaviour {
 			                                                    -1F), 
 			                                 Quaternion.identity);
 			temp.transform.localScale = new Vector3 (.4F, 1, 1);
+
 		}
 		else{
 			Instantiate (lev_sleft, GetNextLevelPosition(currentHeight), Quaternion.identity);
@@ -95,13 +96,15 @@ public class LevelGenerator : MonoBehaviour {
 			//Place floor where it is needed
 			temp = (GameObject) Instantiate (floor, new Vector3(start.transform.position.x + 1.5F, 
 			                                                    currentHeight - (distanceBetweenLevels/2), 
-			                                                    -1F), 
-			                                 Quaternion.identity);
+			                                                    -1F)
+			                                 , Quaternion.identity);
 			temp.transform.localScale = new Vector3 (.4F, 1, 1);
 		}
 
 		//Random chance of placing a treasure chest
 		if(Random.Range(0,100) < chestChance){
+			Instantiate(treasureChest, new Vector3(temp.transform.position.x, temp.transform.position.y + .5F)
+			            , Quaternion.identity);
 		}
 	}
 
