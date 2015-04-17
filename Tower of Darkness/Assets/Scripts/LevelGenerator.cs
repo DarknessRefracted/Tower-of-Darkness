@@ -14,11 +14,11 @@ public class LevelGenerator : MonoBehaviour {
 	public float distanceBetweenLevels;//3.25
 	public int chestChance;
 
-	private GameObject start;
+	public GameObject start;
 	//float currentHeight is automatically adjusted by the GetNextLevelPosition
-	private float currentHeight;
+	public float currentHeight;
 
-	private GameObject player;
+	public GameObject player;
 	private GameObject towerBacking;
 
 	// Use this for initialization
