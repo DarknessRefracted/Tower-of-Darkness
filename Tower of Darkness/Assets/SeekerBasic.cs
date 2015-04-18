@@ -31,7 +31,7 @@ public class SeekerBasic : MonoBehaviour {
 		
 		Vector3 target = moveDirection * moveSpeed + currentPosition;
 		transform.position = Vector3.Lerp( currentPosition, target, Time.deltaTime );
-		Debug.Log ("Current " + transform.position + ". Moving to " + target + ".");
+		//Debug.Log ("Current " + transform.position + ". Moving to " + target + ".");
 		//float targetAngle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
 		//transform.rotation = 
 			//Quaternion.Slerp( transform.rotation, 

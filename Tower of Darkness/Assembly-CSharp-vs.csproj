@@ -46,6 +46,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CollisionCheck.cs" />
+     <Compile Include="Assets\Grid.cs" />
+     <Compile Include="Assets\GridAttached.cs" />
+     <Compile Include="Assets\Node.cs" />
      <Compile Include="Assets\Scripts\Backup\AdjAgentSensor.cs" />
      <Compile Include="Assets\Scripts\Backup\CharControllerOrig.cs" />
      <Compile Include="Assets\Scripts\Backup\ForwardSensor.cs" />
@@ -56,8 +60,11 @@
      <Compile Include="Assets\Scripts\CloudMove.cs" />
      <Compile Include="Assets\Scripts\LevelGenerator.cs" />
      <Compile Include="Assets\Scripts\SmoothFollow.cs" />
+     <Compile Include="Assets\SeekerAStar.cs" />
      <Compile Include="Assets\SeekerBasic.cs" />
+     <Compile Include="Assets\Spawner.cs" />
      <Compile Include="Assets\Sprites\Tower\RemoveGravity.cs" />
+     <Compile Include="Assets\gameStart.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
