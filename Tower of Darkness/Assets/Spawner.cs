@@ -13,8 +13,8 @@ public class Spawner : MonoBehaviour {
 	public GameObject target;
 	public GameObject startNode;
 	public GameObject endNode;
-	public Node beginNode;
-	public Node finishNode;
+	public Node2 beginNode;
+	public Node2 finishNode;
 	GameObject[] tempGrid;
 	Vector3 spawnClick;
 
@@ -71,7 +71,7 @@ public class Spawner : MonoBehaviour {
 					Destroy (GameObject.Find ("Subject(Clone)"));
 					Destroy (GameObject.Find ("Target(Clone)"));
 					if (gridScript.path != null) {
-						foreach(Node n in gridScript.path)
+						foreach(Node2 n in gridScript.path)
 						{
 							gridScript.grid[n.gridX,n.gridY].SetActive(false);
 							

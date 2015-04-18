@@ -6,14 +6,14 @@ public class gameStart : MonoBehaviour {
 
 	public Spawner spawnerScript;
 	public Grid gridScript;
-	List<Node> closed = new List<Node>();
-	List<Node> open = new List<Node>();
-	List<Node> path = new List<Node> ();
+	List<Node2> closed = new List<Node2>();
+	List<Node2> open = new List<Node2>();
+	List<Node2> path = new List<Node2> ();
 	//GameObject current;
-	Node neighbor = new Node();
-	Node current;
-	Node target;
-	Node start;
+	Node2 neighbor = new Node2();
+	Node2 current;
+	Node2 target;
+	Node2 start;
 	int maxX;
 	int maxY;
 	// Use this for initialization
@@ -58,12 +58,12 @@ public class gameStart : MonoBehaviour {
 				Debug.Log ("Target reached");
 				RetracePath (start, target);
 				//path = null;
-				open= new List<Node>();
-				closed = new List<Node>();
+				open= new List<Node2>();
+				closed = new List<Node2>();
 				return;
 			}
 
-			foreach(Node neighbor in gridScript.GetNeightbors(current))
+			foreach(Node2 neighbor in gridScript.GetNeightbors(current))
 			{
 				//Debug.Log ("In foreach");
 				if(neighbor.walkable || closed.Contains(neighbor))
@@ -94,7 +94,7 @@ public class gameStart : MonoBehaviour {
 
 	}
 	
-	int calculateCost(Node a, Node b)
+	int calculateCost(Node2 a, Node2 b)
 	{
 		int dstX = Mathf.Abs (a.gridX - b.gridX);
 		int dstY = Mathf.Abs (a.gridY - b.gridY);
@@ -105,10 +105,10 @@ public class gameStart : MonoBehaviour {
 		return 14 * dstX + 10 * (dstX - dstY);
 		
 		}
-	void RetracePath(Node startNode, Node endNode)
+	void RetracePath(Node2 startNode, Node2 endNode)
 	{
 		//List<Node> path = new List<Node> ();
-		Node currentNode = endNode;
+		Node2 currentNode = endNode;
 
 		while (currentNode != startNode) {
 						path.Add (currentNode);
@@ -122,7 +122,7 @@ public class gameStart : MonoBehaviour {
 	}
 
 
-	int byCost(Node a, Node b)
+	int byCost(Node2 a, Node2 b)
 	{
 			int comparator = a.f_cost.CompareTo (b.f_cost);
 			if(comparator == 0)
