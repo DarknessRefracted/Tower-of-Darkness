@@ -20,7 +20,6 @@ public class MazeGeneration2 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		scrLevGen = (LevelGenerator) GetComponent ("LevelGenerator");
-		produceMaze ();
 	}
 
 	void produceMaze(){

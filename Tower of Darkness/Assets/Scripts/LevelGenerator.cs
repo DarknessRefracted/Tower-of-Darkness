@@ -5,6 +5,9 @@ public class LevelGenerator : MonoBehaviour {
 	public GameObject groundLevel;
 	public GameObject floor;
 	public GameObject lev_sright, lev_sleft;
+	public GameObject lev_sright_hole, lev_sleft_hole;
+	public int default_hole_chance;
+	private int hole_chance;
 
 	public GameObject treasureChest;
 	public GameObject stairsLeft;
@@ -28,6 +31,7 @@ public class LevelGenerator : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		towerBacking = GameObject.FindGameObjectWithTag ("TowerBacking");
 		start = GameObject.FindGameObjectWithTag ("Start");
+		hole_chance = default_hole_chance;
 
 		//Generate the ground level
 		Instantiate (groundLevel, start.transform.position, Quaternion.identity);
@@ -78,7 +82,18 @@ public class LevelGenerator : MonoBehaviour {
 		//Generate the next level
 		//Figure out what kind of level needs to be generated
 		if(prev_is_stairleft){
-			Instantiate (lev_sright, GetNextLevelPosition(currentHeight), Quaternion.identity);
+
+			//Decide whether or not to remove the opposite wall
+			if(Random.Range(0, 10) < hole_chance){
+				Instantiate (lev_sright_hole, GetNextLevelPosition(currentHeight), Quaternion.identity);
+				//Reset the hole chance
+				hole_chance = default_hole_chance;
+			}
+			else{
+				Instantiate (lev_sright, GetNextLevelPosition(currentHeight), Quaternion.identity);
+				hole_chance++;
+			}
+
 			prev_is_stairleft = false;
 
 			//Place floor where it is needed
@@ -90,7 +105,18 @@ public class LevelGenerator : MonoBehaviour {
 
 		}
 		else{
-			Instantiate (lev_sleft, GetNextLevelPosition(currentHeight), Quaternion.identity);
+
+			//Decide whether or not to remove the opposite wall
+			if(Random.Range(0, 10) < hole_chance){
+				Instantiate (lev_sleft_hole, GetNextLevelPosition(currentHeight), Quaternion.identity);
+				//Reset the hole chance
+				hole_chance = default_hole_chance;
+			}
+			else{
+				Instantiate (lev_sleft, GetNextLevelPosition(currentHeight), Quaternion.identity);
+				hole_chance++;
+			}
+
 			prev_is_stairleft = true;
 
 			//Place floor where it is needed
