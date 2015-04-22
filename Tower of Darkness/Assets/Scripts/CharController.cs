@@ -22,7 +22,7 @@ public class CharController : MonoBehaviour {
 		move = Input.GetAxis ("Horizontal");
 		rigidbody2D.velocity = new Vector2 (move * speed, rigidbody2D.velocity.y);
 
-		if (Input.GetKey(KeyCode.W)) {//Input.GetAxis ("Vertical") > 0 other choice 
+		if (Input.GetKey(KeyCode.W) || Input.GetKey (KeyCode.UpArrow)) {//Input.GetAxis ("Vertical") > 0 other choice 
 						if (grounded) {
 								rigidbody2d.velocity = new Vector2 (rigidbody2D.velocity.x, 0);
 								rigidbody2d.AddForce (new Vector2 (0, jumpForce));

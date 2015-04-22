@@ -105,6 +105,7 @@ public class LevelGenerator : MonoBehaviour {
 		if(Random.Range(0,100) < chestChance){
 			Instantiate(treasureChest, new Vector3(temp.transform.position.x, temp.transform.position.y + .5F)
 			            , Quaternion.identity);
+			treasureChest.gameObject.tag = "Treasure";
 		}
 	}
 
