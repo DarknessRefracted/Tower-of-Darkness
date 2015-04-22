@@ -13,6 +13,11 @@ public class MazeGeneration2 : MonoBehaviour {
 	public GameObject mazeBackground;
 	public GameObject mazeWallBlock;
 
+	//Maze objects produced in the game. Use these so that we can quickly delete them after the maze is solved
+	public GameObject objBackground;
+	public GameObject[,] objSpaces;
+	public GameObject[,] objWalls;
+
 	//LevelGenerator object in order to access height-related values/functions for placing the maze onto the screen
 	public LevelGenerator scrLevGen;
 
@@ -22,8 +27,11 @@ public class MazeGeneration2 : MonoBehaviour {
 		scrLevGen = (LevelGenerator) GetComponent ("LevelGenerator");
 	}
 
+	public void startMazeGeneration(){
+		produceMaze ();
+	}
+
 	void produceMaze(){
-		GameObject mazeObject;
 		//Rows and columns must be even for the algorithm to work.
 			//If they are not even, then it is best to double the amounts, because it will allow for the same number of filled rows and
 				// columns, but with the necessary amount of unfilled rows and columns
@@ -33,6 +41,8 @@ public class MazeGeneration2 : MonoBehaviour {
 			columns *= 2;
 
 		maze = new int[rows,columns];
+		objSpaces = new GameObject[rows,columns]
+		objWalls = new GameObject[2, rows];
 
 		//Initialize the maze
 		for (int i=0; i<rows; ++i) {
@@ -47,24 +57,25 @@ public class MazeGeneration2 : MonoBehaviour {
 		//TODO - Freeze the game
 
 		//Display the maze
-		mazeObject = (GameObject) Instantiate (mazeBackground, 
+		objBackground = (GameObject) Instantiate (mazeBackground, 
 		                                       new Vector3(scrLevGen.start.transform.position.x, 
 		            							scrLevGen.player.transform.position.y - (float) 0.5, 
 		            							scrLevGen.start.transform.position.z),
 		                                       Quaternion.identity);
 
 		for(int i=0; i<rows; ++i){
-			Instantiate(mazeWallBlock, 
-			            new Vector3(mazeObject.transform.position.x  - (float) 3.75, 
-			            mazeObject.transform.position.y + (float)0.25 * i - (float) 3.5, -1), 
-			            Quaternion.identity);
-			Instantiate(mazeWallBlock, 
-			            new Vector3(mazeObject.transform.position.x  - (float) 3.5 + (float) 0.25 * columns, 
-			            mazeObject.transform.position.y + (float)0.25 * i - (float) 3.5, -1), 
-			            Quaternion.identity);
+			objWalls[0, i] =  Instantiate(mazeWallBlock, 
+			            		new Vector3(objBackground.transform.position.x  - (float) 3.75, 
+			            		objBackground.transform.position.y + (float)0.25 * i - (float) 3.5, -1), 
+			            		Quaternion.identity);
+			objWalls[1, i] =  Instantiate(mazeWallBlock, 
+			            		new Vector3(objBackground.transform.position.x  - (float) 3.5 + (float) 0.25 * columns, 
+			            		objBackground.transform.position.y + (float)0.25 * i - (float) 3.5, -1), 
+			            		Quaternion.identity);
 
 			for(int j=0; j<columns; ++j){
 				if(maze[i,j] == (int) Cell.OPEN){
+					objSpaces[i,j] = null;
 				   /*if(i == 0 && j == 0){
 						Instantiate(mazeWallBlock, 
 						            new Vector3(mazeObject.transform.position.x + (float)0.30 - (float) 3.5, 
@@ -77,15 +88,28 @@ public class MazeGeneration2 : MonoBehaviour {
 						            Quaternion.identity);}*/
 				}
 				else{
-					Instantiate(mazeWallBlock, 
-					            new Vector3(mazeObject.transform.position.x + (float)0.25 * j - (float) 3.5, 
-					            	mazeObject.transform.position.y + (float)0.25 * i - (float) 3.5, -1), 
-					            Quaternion.identity);
+					objSpaces[i,j] = Instantiate(mazeWallBlock, 
+					            	new Vector3(objBackground.transform.position.x + (float)0.25 * j - (float) 3.5, 
+					            		objBackground.transform.position.y + (float)0.25 * i - (float) 3.5, -1), 
+					            		Quaternion.identity);
 				}
 			}
 		}
 
 		printGraph ();
+	}
+
+	void deleteMaze(){
+		for(int i=0; i<rows; ++i){
+			//Delete walls
+			//objWalls[0, i].
+
+			for(int j=0; j<columns; ++j){
+				//Delete whatever block was at this space
+				if(objSpaces[i,j] != null){
+				}
+			}
+		}
 	}
 
 	//Function will perform maze generation many times (I've been using 111,000 as the number of tests) to make sure that none of the

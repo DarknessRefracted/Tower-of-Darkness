@@ -13,6 +13,13 @@ public class CharController : MonoBehaviour {
 	private Animator animationController;
 	private bool pickLeft;
 
+	//Getting the maze generation stuffs
+	private GameObject tower;
+	private MazeGeneration2 mazeScript;
+	private MazeSolver solverScript;
+
+	private bool freezeMovement;
+
 	private int currentAnimationState;
 	private enum moves{
 		WALKLEFT, WALKRIGHT, 
@@ -24,6 +31,12 @@ public class CharController : MonoBehaviour {
 
 	void Start(){
 		//rigidbody2D = GetComponent<Rigidbody2D>();
+		tower = GameObject.FindGameObjectWithTag ("Tower");
+		mazeScript = (MazeGeneration2) tower.GetComponent<MazeGeneration2>();
+		solverScript = (MazeSolver)tower.GetComponent<MazeSolver> ();
+
+		freezeMovement = false;
+
 		animationController = this.GetComponent<Animator>();
 		currentAnimationState = 10;
 		pickLeft = true;
@@ -36,37 +49,44 @@ public class CharController : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
+		if(!freezeMovement)
+			handleMovement();
+		else if(solverScript.cpuFinished || solverScript.playerFinished)
+			allowMovement();
+	}
+	
+	void handleMovement(){
 		move = Input.GetAxis ("Horizontal");
 		rigidbody2D.velocity = new Vector2 (move * speed, rigidbody2D.velocity.y);
-
+			
 		if (Input.GetKey(KeyCode.W)) {//Input.GetAxis ("Vertical") > 0 other choice 
-						if (grounded) {
-				   				
-								rigidbody2d.velocity = new Vector2 (rigidbody2D.velocity.x, 0);
-								rigidbody2d.AddForce (new Vector2 (0, jumpForce));
-								grounded = false;
-								jumpCooldown = 0.4f;
-								
-								if(!onWall){
-									if(pickLeft){
-										currentAnimationState = (int)moves.JUMPLEFT_UP;
-									}
-									else
-										currentAnimationState = (int)moves.JUMPRIGHT_UP;
-								}
-
-						} else if( jumpCooldown < 0) {
-								if (candoublejump) {
-									candoublejump = false;
-									rigidbody2d.velocity = new Vector2 (rigidbody2D.velocity.x, 0);
-									rigidbody2D.AddForce (new Vector2 (0, jumpForce));
-									
-									if(pickLeft)
-										currentAnimationState = (int)moves.JUMPLEFT_DOWN;
-									else
-										currentAnimationState = (int)moves.JUMPRIGHT_DOWN;
-								}
-						}
+			if (grounded) {
+				
+				rigidbody2d.velocity = new Vector2 (rigidbody2D.velocity.x, 0);
+				rigidbody2d.AddForce (new Vector2 (0, jumpForce));
+				grounded = false;
+				jumpCooldown = 0.4f;
+				
+				if(!onWall){
+					if(pickLeft){
+						currentAnimationState = (int)moves.JUMPLEFT_UP;
+					}
+					else
+						currentAnimationState = (int)moves.JUMPRIGHT_UP;
+				}
+				
+			} else if( jumpCooldown < 0) {
+				if (candoublejump) {
+					candoublejump = false;
+					rigidbody2d.velocity = new Vector2 (rigidbody2D.velocity.x, 0);
+					rigidbody2D.AddForce (new Vector2 (0, jumpForce));
+					
+					if(pickLeft)
+						currentAnimationState = (int)moves.JUMPLEFT_DOWN;
+					else
+						currentAnimationState = (int)moves.JUMPRIGHT_DOWN;
+				}
+			}
 		}
 		else if(grounded && !onWall){
 			if(Input.GetKey(KeyCode.A)){
@@ -81,7 +101,7 @@ public class CharController : MonoBehaviour {
 				currentAnimationState = (int)moves.STANDING;
 			}
 		}
-
+			
 		animationController.SetInteger("Action", currentAnimationState);
 	}
 
@@ -89,7 +109,7 @@ public class CharController : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other) {
 		grounded = true;
 		candoublejump = true;
-		
+
 		if (other.gameObject.CompareTag("RVerticalWall")){
 			currentAnimationState = (int)moves.CLINGRIGHT;
 			onWall = true;
@@ -98,7 +118,25 @@ public class CharController : MonoBehaviour {
 			currentAnimationState = (int)moves.CLINGLEFT;
 			onWall = true;
 		}
-		else
+		else{
 			onWall = false;
+
+			if(other.gameObject.CompareTag("TreasureChest")){
+				mazeScript.startMazeGeneration();
+				//Suspend movement--movmement is allowed when the maze has been completed by player or computer
+				suspendMovement();
+			}
+
+		}
+	}
+
+
+	//Function prevents the subject from moving (used after generating a maze
+	void suspendMovement(){
+		freezeMovement = true;
+	}
+	//And the opposite
+	void allowMovement(){
+		freezeMovement = false;
 	}
 }

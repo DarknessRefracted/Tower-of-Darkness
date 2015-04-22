@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\CloudMove.cs" />
      <Compile Include="Assets\Scripts\LevelGenerator.cs" />
      <Compile Include="Assets\Scripts\MazeGeneration2.cs" />
+     <Compile Include="Assets\Scripts\MazeSolver.cs" />
      <Compile Include="Assets\Scripts\SmoothFollow.cs" />
      <Compile Include="Assets\Sprites\Tower\RemoveGravity.cs" />
      <None Include="Assets\maze.txt" />
