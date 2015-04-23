@@ -13,7 +13,7 @@ public class SeekerAStar : MonoBehaviour {
 
 	void Start () {
 		player = GameObject.FindWithTag ("Player");
-		Debug.Log ("Player position: " + player.transform.position + ".");
+		//Debug.Log ("Player position: " + player.transform.position + ".");
 		currentPosition = transform.position;
 	}
 	

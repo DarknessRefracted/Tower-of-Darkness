@@ -10,28 +10,38 @@ public class Radar : MonoBehaviour {
 	public Transform targetNode;
 	public Transform startNode;
 	private GameObject player;
-	private List<Transform> openList;
-	private List<Transform> closed;
-	private List<Transform> path = null;
+	private List<Transform> openList = new List<Transform>();
+	private List<Transform> closed = new List<Transform> ();
+	private List<Transform> path = new List<Transform>();
+	private float seekTimeNext = 0;
+
+
+
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
+		seekTimeNext = Time.time;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log ("Contains " + nodeList.Count + " nodes.");
+		//Debug.Log ("Contains " + nodeList.Count + " nodes.");
 
 		//Debug.Log ("Closest node is " + currentNode.position);
-		if(nodeList.Count > 0)
-			findPath ();
+
+		if (Time.time >= seekTimeNext) {
+						if (nodeList.Count > 0)
+								//findPath ();
+						seekTimeNext += 1f;
+				}
+
 	}
 	void findPath () {
 		//GetClosestNode (nodeList);
 		nodeList.Sort (byDistanceStart);
-		currentNode = nodeList [0];
-		Debug.Log ("Current node type: " + currentNode.GetType());
+		currentNode = GetClosestNode(nodeList);
+		//Debug.Log ("Current node type: " + currentNode.GetType());
 		targetNode = player.GetComponent<RadarSmall>().playerNode;
-		openList.Add (targetNode);
+		openList.Add (currentNode);
 		startNode = currentNode;
 		while (openList.Count > 0) 
 		{
@@ -41,11 +51,11 @@ public class Radar : MonoBehaviour {
 			if(openList.Contains (currentNode))
 			{
 				openList.Remove(currentNode);
-				Debug.Log ("Removed current");
+				//Debug.Log ("Removed current");
 			}
 			if(currentNode.position ==  targetNode.position)
 			{
-				Debug.Log ("Target reached");
+				//Debug.Log ("Target reached");
 				RetracePath (startNode, targetNode);
 				//path = null;
 				openList = new List<Transform>();
@@ -55,7 +65,7 @@ public class Radar : MonoBehaviour {
 			
 			foreach(Transform neighbor in currentNode.GetComponent<NodeAttached>().neighbors)
 			{
-				Debug.Log ("In foreach");
+				//Debug.Log ("In foreach");
 				if(neighbor.GetComponent<NodeAttached>().walkable || closed.Contains(neighbor))
 				{
 					//Debug.Log ("Continued");
@@ -147,7 +157,7 @@ public class Radar : MonoBehaviour {
 
 	//optimized closest node position found at http://forum.unity3d.com/threads/clean-est-way-to-find-nearest-object-of-many-c.44315/
 	//Transform GetClosestNode (List<Transform> nodeList)
-	/*void GetClosestNode (List<Transform> nodeList)
+	Transform GetClosestNode (List<Transform> nodeList)
 	{
 
 		float closestDistanceSqr = Mathf.Infinity;
@@ -163,7 +173,7 @@ public class Radar : MonoBehaviour {
 			}
 		}
 		
-		//return currentNode;
-	}*/
+		return currentNode;
+	}
 
 }

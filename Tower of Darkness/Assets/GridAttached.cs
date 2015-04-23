@@ -54,14 +54,14 @@ public class GridAttached : MonoBehaviour
 								//closestObjects.Add (grid [i, j]);
 								//Debug.Log ("closestObjects = " + closestObjects.Count);
 								
-								Debug.Log ("Transform of grid[" + i + "][" + j + "] is " + grid [i, j].transform.position);
+								//Debug.Log ("Transform of grid[" + i + "][" + j + "] is " + grid [i, j].transform.position);
 								j++;
 						}
 						i++;
 				}	
 				gridWidth = i;
 				gridLength = j;
-				Debug.Log ("i = " + i + ", j = " + j);
+				//Debug.Log ("i = " + i + ", j = " + j);
 				
 				for (i = 0; i < gridWidth; i++) {
 						for (j = 0; j < gridLength; j++) {

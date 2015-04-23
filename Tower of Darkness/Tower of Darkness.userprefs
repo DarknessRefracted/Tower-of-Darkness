@@ -2,23 +2,45 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Radar.cs">
     <Files>
-      <File FileName="Assets\gameStart.cs" Line="14" Column="16" />
+      <File FileName="Assets\GridAttached.cs" Line="49" Column="69" />
       <File FileName="Assets\Scripts\SmoothFollow.cs" Line="1" Column="1" />
-      <File FileName="b:\GitHub\Tower-of-Darkness\Tower of Darkness\Assets\Node2.cs" Line="1" Column="1" />
-      <File FileName="b:\GitHub\Tower-of-Darkness\Tower of Darkness\Assets\gameStart.cs" Line="113" Column="37" />
-      <File FileName="b:\GitHub\Tower-of-Darkness\Tower of Darkness\Assets\Grid.cs" Line="86" Column="35" />
-      <File FileName="b:\GitHub\Tower-of-Darkness\Tower of Darkness\Assets\GridAttached.cs" Line="67" Column="23" />
-      <File FileName="b:\GitHub\Tower-of-Darkness\Tower of Darkness\Assets\Spawner.cs" Line="127" Column="4" />
-      <File FileName="b:\GitHub\Tower-of-Darkness\Tower of Darkness\Assets\NodeAttached.cs" Line="32" Column="6" />
-      <File FileName="Assets\Radar.cs" Line="34" Column="1" />
-      <File FileName="Assets\AdjAgentSensor.cs" Line="108" Column="2" />
-      <File FileName="Assets\SeekerBasic.cs" Line="14" Column="3" />
+      <File FileName="Assets\Radar.cs" Line="33" Column="11" />
+      <File FileName="Assets\SeekerBasic.cs" Line="16" Column="2" />
       <File FileName="Assets\CollisionCheck.cs" Line="1" Column="1" />
-      <File FileName="Assets\RadarSmall.cs" Line="17" Column="5" />
+      <File FileName="Assets\RadarSmall.cs" Line="22" Column="23" />
+      <File FileName="Assets\SeekerAStar.cs" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Scripts" expanded="True" />
+            <Node name="Radar.cs" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>this.path</Value>
+          <Value>this.nodeList</Value>
+          <Value>this.path</Value>
+          <Value>this.currentNode</Value>
+          <Value>this.openList</Value>
+          <Value>this.targetNode</Value>
+          <Value>this.startNode</Value>
+          <Value>this.targetNode.position</Value>
+          <Value>this.currentNode.position</Value>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="D:\GitHub\Tower-of-Darkness\Tower of Darkness\Assets\Radar.cs" line="38" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
