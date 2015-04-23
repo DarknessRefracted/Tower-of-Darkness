@@ -30,17 +30,19 @@ public class Radar : MonoBehaviour {
 
 		if (Time.time >= seekTimeNext) {
 						if (nodeList.Count > 0)
-								//findPath ();
-						seekTimeNext += 1f;
+								findPath ();
+						seekTimeNext = Time.time + 1f;
 				}
 
 	}
 	void findPath () {
 		//GetClosestNode (nodeList);
 		nodeList.Sort (byDistanceStart);
-		currentNode = GetClosestNode(nodeList);
+		currentNode = GetClosestNodeEnemy(nodeList);
 		//Debug.Log ("Current node type: " + currentNode.GetType());
-		targetNode = player.GetComponent<RadarSmall>().playerNode;
+		targetNode = GetClosestNodePlayer(nodeList);
+		//this sets the target for the movement
+		this.GetComponentInParent<SeekerAStar> ().targetNode = targetNode;
 		openList.Add (currentNode);
 		startNode = currentNode;
 		while (openList.Count > 0) 
@@ -76,6 +78,22 @@ public class Radar : MonoBehaviour {
 				//Debug.Log ("New move some stuff idk = " + newMovementCostToNeighbor);
 				if(newMovementCostToNeighbor < neighbor.GetComponent<NodeAttached>().g_cost || !openList.Contains(neighbor))
 				{
+					/*
+					 * 
+					 * 
+					 * 
+					 * MAKE SURE YOU LIMIT THE NEIGHBOR SEARCH ONLY TO THE RADAR SIZE/WALKABLE/ENDPATH AS CLOSEST NODE TO PLAYER
+					 * 
+					 * 
+					 * 
+					 * 
+					 * 
+					 * 
+					 * 
+					 * 
+					 * 
+					 * 
+					 */
 					//Debug.Log("In if statement to add neighbors");
 					neighbor.GetComponent<NodeAttached>().g_cost = newMovementCostToNeighbor;
 					neighbor.GetComponent<NodeAttached>().h_cost = calculateCost(neighbor,targetNode);
@@ -157,7 +175,7 @@ public class Radar : MonoBehaviour {
 
 	//optimized closest node position found at http://forum.unity3d.com/threads/clean-est-way-to-find-nearest-object-of-many-c.44315/
 	//Transform GetClosestNode (List<Transform> nodeList)
-	Transform GetClosestNode (List<Transform> nodeList)
+	Transform GetClosestNodeEnemy (List<Transform> nodeList)
 	{
 
 		float closestDistanceSqr = Mathf.Infinity;
@@ -176,4 +194,22 @@ public class Radar : MonoBehaviour {
 		return currentNode;
 	}
 
+	Transform GetClosestNodePlayer (List<Transform> nodeList)
+	{
+		
+		float closestDistanceSqr = Mathf.Infinity;
+		Vector3 playerPosition = player.transform.position;
+		foreach(Transform potentialTarget in nodeList)
+		{
+			Vector3 directionToTarget = potentialTarget.position - playerPosition;
+			float dSqrToTarget = directionToTarget.sqrMagnitude;
+			if(dSqrToTarget < closestDistanceSqr)
+			{
+				closestDistanceSqr = dSqrToTarget;
+				currentNode = potentialTarget;
+			}
+		}
+		
+		return currentNode;
+	}
 }

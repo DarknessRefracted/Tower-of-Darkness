@@ -1,12 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Radar.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CollisionCheck.cs">
     <Files>
-      <File FileName="Assets\GridAttached.cs" Line="49" Column="69" />
+      <File FileName="Assets\Radar.cs" Line="56" Column="33" />
+      <File FileName="Assets\GridAttached.cs" Line="48" Column="80" />
       <File FileName="Assets\Scripts\SmoothFollow.cs" Line="1" Column="1" />
-      <File FileName="Assets\Radar.cs" Line="33" Column="11" />
-      <File FileName="Assets\SeekerBasic.cs" Line="16" Column="2" />
-      <File FileName="Assets\CollisionCheck.cs" Line="1" Column="1" />
+      <File FileName="Assets\SeekerBasic.cs" Line="33" Column="80" />
+      <File FileName="Assets\CollisionCheck.cs" Line="26" Column="29" />
       <File FileName="Assets\RadarSmall.cs" Line="22" Column="23" />
       <File FileName="Assets\SeekerAStar.cs" Line="1" Column="1" />
     </Files>
@@ -15,7 +15,7 @@
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True" />
-            <Node name="Radar.cs" selected="True" />
+            <Node name="CollisionCheck.cs" selected="True" />
           </Node>
         </State>
       </Pad>
