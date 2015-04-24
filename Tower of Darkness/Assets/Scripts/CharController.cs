@@ -132,7 +132,7 @@ public class CharController : MonoBehaviour {
 			currentAnimationState = (int)moves.CLINGLEFT;
 			onWall = true;
 		}
-		else if(other.gameObject.CompareTag("Catcher"){
+		else if(other.gameObject.CompareTag("Catcher")){
 			//Kill character
 		}
 		else{
