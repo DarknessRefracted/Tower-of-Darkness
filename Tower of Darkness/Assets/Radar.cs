@@ -14,11 +14,14 @@ public class Radar : MonoBehaviour {
 	private List<Transform> closed = new List<Transform> ();
 	private List<Transform> path = new List<Transform>();
 	private float seekTimeNext = 0;
+	public SeekerAStar seekerScript;
 
 
-
-	void Start () {
+	void Awake () {
 		player = GameObject.FindGameObjectWithTag ("Player");
+		seekerScript = this.GetComponentInParent<SeekerAStar>();//gets the seeker script
+		seekerScript.enabled = false;//disables it
+
 		seekTimeNext = Time.time;
 	}
 	
@@ -37,6 +40,7 @@ public class Radar : MonoBehaviour {
 	}
 	void findPath () {
 		//GetClosestNode (nodeList);
+		path = new List<Transform>();
 		nodeList.Sort (byDistanceStart);
 		currentNode = GetClosestNodeEnemy(nodeList);
 		//Debug.Log ("Current node type: " + currentNode.GetType());
@@ -68,7 +72,7 @@ public class Radar : MonoBehaviour {
 			foreach(Transform neighbor in currentNode.GetComponent<NodeAttached>().neighbors)
 			{
 				//Debug.Log ("In foreach");
-				if(neighbor.GetComponent<NodeAttached>().walkable || closed.Contains(neighbor))
+				if(neighbor.GetComponent<NodeAttached>().walkable || closed.Contains(neighbor) || !nodeList.Contains (neighbor))
 				{
 					//Debug.Log ("Continued");
 					continue;

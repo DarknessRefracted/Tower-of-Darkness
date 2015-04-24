@@ -7,7 +7,7 @@ public class SeekerAStar : MonoBehaviour {
 	//public float turnSpeed;
 	private Vector3 moveDirection;
 	//public Rigidbody2D rigidbody2d;
-	private GameObject player;
+	//private GameObject player;
 	public Transform targetNode;
 	private Vector3 currentPosition;
 	private Vector3 moveToward;
