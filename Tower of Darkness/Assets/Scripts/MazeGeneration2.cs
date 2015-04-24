@@ -40,8 +40,8 @@ public class MazeGeneration2 : MonoBehaviour {
 		if(columns % 2 == 1)
 			columns *= 2;
 
-		maze = new int[rows,columns];
-		objSpaces = new GameObject[rows,columns]
+		maze = new int[rows, columns];
+		objSpaces = new GameObject[rows, columns];
 		objWalls = new GameObject[2, rows];
 
 		//Initialize the maze
@@ -64,17 +64,18 @@ public class MazeGeneration2 : MonoBehaviour {
 		                                       Quaternion.identity);
 
 		for(int i=0; i<rows; ++i){
-			objWalls[0, i] =  Instantiate(mazeWallBlock, 
+			objWalls[0, i] =  (GameObject) Instantiate(mazeWallBlock, 
 			            		new Vector3(objBackground.transform.position.x  - (float) 3.75, 
 			            		objBackground.transform.position.y + (float)0.25 * i - (float) 3.5, -1), 
 			            		Quaternion.identity);
-			objWalls[1, i] =  Instantiate(mazeWallBlock, 
+			objWalls[1, i] =  (GameObject) Instantiate(mazeWallBlock, 
 			            		new Vector3(objBackground.transform.position.x  - (float) 3.5 + (float) 0.25 * columns, 
 			            		objBackground.transform.position.y + (float)0.25 * i - (float) 3.5, -1), 
 			            		Quaternion.identity);
 
 			for(int j=0; j<columns; ++j){
 				if(maze[i,j] == (int) Cell.OPEN){
+					//If it is an open cell, then set that index of the array to null
 					objSpaces[i,j] = null;
 				   /*if(i == 0 && j == 0){
 						Instantiate(mazeWallBlock, 
@@ -88,7 +89,7 @@ public class MazeGeneration2 : MonoBehaviour {
 						            Quaternion.identity);}*/
 				}
 				else{
-					objSpaces[i,j] = Instantiate(mazeWallBlock, 
+					objSpaces[i,j] = (GameObject) Instantiate(mazeWallBlock, 
 					            	new Vector3(objBackground.transform.position.x + (float)0.25 * j - (float) 3.5, 
 					            		objBackground.transform.position.y + (float)0.25 * i - (float) 3.5, -1), 
 					            		Quaternion.identity);
@@ -96,20 +97,26 @@ public class MazeGeneration2 : MonoBehaviour {
 			}
 		}
 
-		printGraph ();
+		//printGraph ();UNNECESSARY TESTING
 	}
 
-	void deleteMaze(){
+	public void deleteMaze(){
+		//Delete the entirety of the maze
 		for(int i=0; i<rows; ++i){
 			//Delete walls
-			//objWalls[0, i].
+			GameObject.Destroy(objWalls[0, i]);
+			GameObject.Destroy(objWalls[1, i]);
 
 			for(int j=0; j<columns; ++j){
-				//Delete whatever block was at this space
+				//Delete whatever block was at this space. If it is null, then skip it
 				if(objSpaces[i,j] != null){
+					GameObject.Destroy(objSpaces[i, j]);
 				}
 			}
 		}
+
+		//Finally, delete the maze's background
+		GameObject.Destroy (objBackground);
 	}
 
 	//Function will perform maze generation many times (I've been using 111,000 as the number of tests) to make sure that none of the

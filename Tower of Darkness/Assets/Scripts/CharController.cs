@@ -18,8 +18,13 @@ public class CharController : MonoBehaviour {
 	private MazeGeneration2 mazeScript;
 	private MazeSolver solverScript;
 
+	//The treasure chest most recently touched
+	private GameObject recentChest;
+
+	//Variable is set to true when we need to totally stop the subject
 	private bool freezeMovement;
 
+	//Animation states
 	private int currentAnimationState;
 	private enum moves{
 		WALKLEFT, WALKRIGHT, 
@@ -33,7 +38,7 @@ public class CharController : MonoBehaviour {
 		//rigidbody2D = GetComponent<Rigidbody2D>();
 		tower = GameObject.FindGameObjectWithTag ("Tower");
 		mazeScript = (MazeGeneration2) tower.GetComponent<MazeGeneration2>();
-		solverScript = (MazeSolver)tower.GetComponent<MazeSolver> ();
+		solverScript = (MazeSolver) tower.GetComponent<MazeSolver> ();
 
 		freezeMovement = false;
 
@@ -45,20 +50,29 @@ public class CharController : MonoBehaviour {
 	void Update(){
 		if (!grounded) {
 			jumpCooldown -= Time.deltaTime;
-		} 
+		}
 	}
 
 	void FixedUpdate(){
-		if(!freezeMovement)
+		if(!freezeMovement){
 			handleMovement();
-		else if(solverScript.cpuFinished || solverScript.playerFinished)
+		}
+		else if(Input.GetKey(KeyCode.M)){
+			//Delete the maze
+			mazeScript.deleteMaze();
+
+			//Delete the chest
+			GameObject.Destroy(recentChest);
+
+			//Allow movement again
 			allowMovement();
+		}
 	}
 	
 	void handleMovement(){
 		move = Input.GetAxis ("Horizontal");
 		rigidbody2D.velocity = new Vector2 (move * speed, rigidbody2D.velocity.y);
-			
+
 		if (Input.GetKey(KeyCode.W)) {//Input.GetAxis ("Vertical") > 0 other choice 
 			if (grounded) {
 				
@@ -118,11 +132,19 @@ public class CharController : MonoBehaviour {
 			currentAnimationState = (int)moves.CLINGLEFT;
 			onWall = true;
 		}
+		else if(other.gameObject.CompareTag("Catcher"){
+			//Kill character
+		}
 		else{
 			onWall = false;
 
 			if(other.gameObject.CompareTag("TreasureChest")){
+				//Save the object for deleting later
+				recentChest = other.gameObject;
+
+				//Generate the maze
 				mazeScript.startMazeGeneration();
+
 				//Suspend movement--movmement is allowed when the maze has been completed by player or computer
 				suspendMovement();
 			}
@@ -134,8 +156,9 @@ public class CharController : MonoBehaviour {
 	//Function prevents the subject from moving (used after generating a maze
 	void suspendMovement(){
 		freezeMovement = true;
+		rigidbody2d.velocity = new Vector2 (0, 0);
 	}
-	//And the opposite
+	//Function restores movement to the subject
 	void allowMovement(){
 		freezeMovement = false;
 	}
