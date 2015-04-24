@@ -6,7 +6,7 @@ public class GridAttached : MonoBehaviour
 {
 
 		public List<Node2> path;
-		public Vector2 size;
+	private Vector2 size = new Vector2 (22f, 10f);
 		public Transform Node;
 		public Transform Node_bad;
 		public Transform Subject;

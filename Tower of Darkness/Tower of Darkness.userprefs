@@ -1,11 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CollisionCheck.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Node2.cs">
     <Files>
-      <File FileName="Assets\CollisionCheck.cs" Line="62" Column="1" />
-      <File FileName="Assets\GridAttached.cs" Line="68" Column="46" />
+      <File FileName="Assets\Node2.cs" Line="1" Column="1" />
+      <File FileName="Assets\Radar.cs" Line="1" Column="1" />
+      <File FileName="Assets\CollisionCheck.cs" Line="1" Column="1" />
+      <File FileName="Assets\GridAttached.cs" Line="1" Column="1" />
       <File FileName="Assets\NodeAttached.cs" Line="1" Column="1" />
-      <File FileName="Assets\Radar.cs" Line="220" Column="1" />
       <File FileName="Assets\Scripts\SmoothFollow.cs" Line="1" Column="1" />
       <File FileName="Assets\SeekerBasic.cs" Line="1" Column="1" />
       <File FileName="Assets\RadarSmall.cs" Line="1" Column="1" />
@@ -16,7 +17,7 @@
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True" />
-            <Node name="CollisionCheck.cs" selected="True" />
+            <Node name="Node2.cs" selected="True" />
           </Node>
         </State>
       </Pad>
@@ -25,22 +26,15 @@
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>this.path</Value>
-          <Value>this.nodeList</Value>
-          <Value>this.path</Value>
-          <Value>this.currentNode</Value>
-          <Value>this.openList</Value>
-          <Value>this.targetNode</Value>
-          <Value>this.startNode</Value>
-          <Value>this.targetNode.position</Value>
-          <Value>this.currentNode.position</Value>
+          <Value>this.radarScript</Value>
+          <Value>this.seekDone</Value>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="D:\GitHub\Tower-of-Darkness\Tower of Darkness\Assets\Radar.cs" line="38" />
+      <Breakpoint file="D:\GitHub\Tower-of-Darkness\Tower of Darkness\Assets\SeekerAStar.cs" line="24" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

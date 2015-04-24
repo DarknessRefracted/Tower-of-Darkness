@@ -11,7 +11,7 @@ public class SeekerBasic : MonoBehaviour {
 	private GameObject player;
 	void Start () {
 		player = GameObject.FindWithTag ("Player");
-		Debug.Log ("Player position: " + player.transform.position + ".");
+		//Debug.Log ("Player position: " + player.transform.position + ".");
 	}
 	
 

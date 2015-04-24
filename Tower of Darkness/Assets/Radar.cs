@@ -12,7 +12,7 @@ public class Radar : MonoBehaviour {
 	private GameObject player;
 	private List<Transform> openList = new List<Transform>();
 	private List<Transform> closed = new List<Transform> ();
-	private List<Transform> path = new List<Transform>();
+	public List<Transform> path = new List<Transform>();
 	private float seekTimeNext = 0;
 	public SeekerAStar seekerScript;
 
@@ -20,22 +20,35 @@ public class Radar : MonoBehaviour {
 	void Awake () {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		seekerScript = this.GetComponentInParent<SeekerAStar>();//gets the seeker script
-		seekerScript.enabled = false;//disables it
+		//seekerScript.enabled = false;//disables it
 
-		seekTimeNext = Time.time;
+		seekTimeNext = Time.time+0.5f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log ("Contains " + nodeList.Count + " nodes.");
-
+		//Debug.Log ("Contains " + nodeList.Count + " nodes.");
+	
 		//Debug.Log ("Closest node is " + currentNode.position);
 
-		if (Time.time >= seekTimeNext) {
-						if (nodeList.Count > 0)
-								findPath ();
-						seekTimeNext = Time.time + 1f;
+		if (Time.time >= seekTimeNext)
+		{
+			if (nodeList.Count > 0 && seekerScript.seekDone)
+			{
+				findPath ();
+				Debug.Log ("Path.count = " + path.Count);
+				if(path.Count > 0)
+				{
+					Debug.Log ("seekDone is false");
+					seekerScript.seekDone = false;
 				}
+				if(seekerScript.seekDone)
+				{
+					path = new List<Transform>();
+				}
+			}
+						seekTimeNext = Time.time + 1f;
+		}
 
 	}
 	void findPath () {
@@ -43,8 +56,10 @@ public class Radar : MonoBehaviour {
 		path = new List<Transform>();
 		nodeList.Sort (byDistanceStart);
 		currentNode = GetClosestNodeEnemy(nodeList);
+		Debug.Log ("Eneme Node " + currentNode.position);
 		//Debug.Log ("Current node type: " + currentNode.GetType());
 		targetNode = GetClosestNodePlayer(nodeList);
+		Debug.Log ("Player " + targetNode.position);
 		//this sets the target for the movement
 		this.GetComponentInParent<SeekerAStar> ().targetNode = targetNode;
 		openList.Add (currentNode);
@@ -136,6 +151,10 @@ public class Radar : MonoBehaviour {
 
 		path.Reverse ();
 		//path.Clear ();
+		foreach(Transform n in path)
+		{
+			Debug.Log ("This transform is " + transform.position);
+		}
 		Debug.Log ("Path made");
 	}
 
