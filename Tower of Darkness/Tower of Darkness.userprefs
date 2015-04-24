@@ -1,12 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GridAttached.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerHealth.cs">
     <Files>
-      <File FileName="Assets\Scripts\CharController.cs" Line="165" Column="2" />
-      <File FileName="Assets\Scripts\MazeGeneration2.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MazeSolver.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\LevelGenerator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GridAttached.cs" Line="8" Column="27" />
+      <File FileName="Assets\Scripts\PlayerHealth.cs" Line="23" Column="19" />
+      <File FileName="Assets\MainMenu\ChangeScene.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
