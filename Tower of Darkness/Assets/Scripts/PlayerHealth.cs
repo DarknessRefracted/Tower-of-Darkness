@@ -20,7 +20,7 @@ public class PlayerHealth : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col) {
 		if (col.gameObject.tag == "Treasure") {
-			damagePlayer(20);
+			damagePlayer(34);
 			Debug.Log ("Player damaged by: " + col.gameObject.tag + "! Health: " + healthBar.value);
 		}
 	}
@@ -28,7 +28,8 @@ public class PlayerHealth : MonoBehaviour {
 	void damagePlayer(int damageAmount){
 		healthBar.value -= damageAmount;
 		if (healthBar.value <= 0) {
-			Debug.Log("NINJA DEAD!");
+			Application.LoadLevel("DeathScene");
+			//Debug.Log("NINJA DEAD!");
 		}
 	}
 }

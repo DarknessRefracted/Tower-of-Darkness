@@ -46,7 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Main Menu\ChangeScene.cs" />
+     <Compile Include="Assets\MainMenu\ChangeScene.cs" />
      <Compile Include="Assets\Scripts\Backup\AdjAgentSensor.cs" />
      <Compile Include="Assets\Scripts\Backup\CharControllerOrig.cs" />
      <Compile Include="Assets\Scripts\Backup\ForwardSensor.cs" />
