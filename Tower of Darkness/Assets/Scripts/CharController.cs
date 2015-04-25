@@ -23,7 +23,7 @@ public class CharController : MonoBehaviour {
 
 	//Variable is set to true when we need to totally stop the subject
 	private bool freezeMovement;
-
+	public DirectionalCollision scriptCollision;
 	//Animation states
 	private int currentAnimationState;
 	private enum moves{
@@ -35,6 +35,7 @@ public class CharController : MonoBehaviour {
 	};
 
 	void Start(){
+		scriptCollision = GetComponent<DirectionalCollision>();
 		//rigidbody2D = GetComponent<Rigidbody2D>();
 		tower = GameObject.FindGameObjectWithTag ("Tower");
 		mazeScript = (MazeGeneration2) tower.GetComponent<MazeGeneration2>();
@@ -121,22 +122,22 @@ public class CharController : MonoBehaviour {
 
 
 	void OnCollisionEnter2D(Collision2D other) {
-		grounded = true;
-		candoublejump = true;
+		//grounded = true;
+		//candoublejump = true;
 
 		if (other.gameObject.CompareTag("RVerticalWall")){
-			currentAnimationState = (int)moves.CLINGRIGHT;
+			currentAnimationState = (int)moves.JUMPLEFT_UP;
 			onWall = true;
 		}
 		else if(other.gameObject.CompareTag("LVerticalWall")){
-			currentAnimationState = (int)moves.CLINGLEFT;
+			currentAnimationState = (int)moves.JUMPRIGHT_UP;
 			onWall = true;
 		}
 		else if(other.gameObject.CompareTag("Catcher")){
 			//Kill character
 		}
 		else{
-			onWall = false;
+			//onWall = false;
 
 			if(!freezeMovement && other.gameObject.CompareTag("TreasureChest")){
 				//Suspend movement--movmement is allowed when the maze has been completed by player or computer
@@ -149,6 +150,49 @@ public class CharController : MonoBehaviour {
 				mazeScript.startMazeGeneration();
 			}
 
+		}
+	}
+	void OnCollisionExit2D(Collision2D other) {
+		grounded = true;
+		candoublejump = true;
+		
+		if (other.gameObject.CompareTag("RVerticalWall")){
+			currentAnimationState = (int)moves.CLINGRIGHT;
+			onWall = false;
+		}
+		else if(other.gameObject.CompareTag("LVerticalWall")){
+			currentAnimationState = (int)moves.CLINGLEFT;
+			onWall = false;
+		}
+		else if(other.gameObject.CompareTag("Catcher")){
+			//Kill character
+		}
+		/*else{
+			onWall = false;
+			
+			if(other.gameObject.CompareTag("TreasureChest")){
+				//Save the object for deleting later
+				recentChest = other.gameObject;
+				
+				//Generate the maze
+				mazeScript.startMazeGeneration();
+				
+				//Suspend movement--movmement is allowed when the maze has been completed by player or computer
+				suspendMovement();
+			}
+			
+		}*/
+	}
+	void OnCollisionStay2D(Collision2D other) {
+		grounded = true;
+		candoublejump = true;
+		if (other.gameObject.CompareTag("RVerticalWall")){
+			currentAnimationState = (int)moves.CLINGRIGHT;
+			onWall = true;
+		}
+		else if(other.gameObject.CompareTag("LVerticalWall")){
+			currentAnimationState = (int)moves.CLINGLEFT;
+			onWall = true;
 		}
 	}
 
