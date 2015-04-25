@@ -15,7 +15,14 @@ public class LevelGenerator : MonoBehaviour {
 
 	public bool prev_is_stairleft;
 	public float distanceBetweenLevels;//3.25
+
+	//Igor's added variables
+	public GameObject ghost;
+	public GameObject gargoyle;
 	public int chestChance;
+	public int levelCounter = 1;
+	public int ghostChance = 1;
+	public Vector3 tempVectorPos;
 
 	public GameObject start;
 	//float currentHeight is automatically adjusted by the GetNextLevelPosition
@@ -77,6 +84,7 @@ public class LevelGenerator : MonoBehaviour {
 	}
 
 	void MakeNextLevel(){
+		levelCounter++;
 		GameObject temp;
 
 		//Generate the next level
@@ -85,13 +93,25 @@ public class LevelGenerator : MonoBehaviour {
 
 			//Decide whether or not to remove the opposite wall
 			if(Random.Range(0, 10) < hole_chance){
-				Instantiate (lev_sright_hole, GetNextLevelPosition(currentHeight), Quaternion.identity);
+				tempVectorPos = GetNextLevelPosition(currentHeight);
+				Instantiate (lev_sright_hole, tempVectorPos, Quaternion.identity);
 				//Reset the hole chance
 				hole_chance = default_hole_chance;
+				Instantiate (gargoyle, tempVectorPos, Quaternion.identity);
 			}
 			else{
-				Instantiate (lev_sright, GetNextLevelPosition(currentHeight), Quaternion.identity);
+				tempVectorPos = GetNextLevelPosition(currentHeight);
+				Instantiate (lev_sright, tempVectorPos, Quaternion.identity);
 				hole_chance++;
+				if(Random.Range (0,1) < ghostChance)
+				{
+					Instantiate(ghost, new Vector3(tempVectorPos.x + Random.Range (0,20),tempVectorPos.y + Random.Range (0,20), 0), Quaternion.identity);
+					ghostChance = 1;
+				} 
+				else
+				{
+					ghostChance++;
+				}
 			}
 
 			prev_is_stairleft = false;
@@ -131,8 +151,10 @@ public class LevelGenerator : MonoBehaviour {
 		if(Random.Range(0,100) < chestChance){
 			Instantiate(treasureChest, new Vector3(temp.transform.position.x, temp.transform.position.y + .5F)
 			            , Quaternion.identity);
-			treasureChest.gameObject.tag = "Treasure";
+				treasureChest.gameObject.tag = "TreasureChest";
 		}
+
+
 	}
 
 	//Function will add the distanceBeteweenLevels to the current_y, and return a Vector3 that has its y as the result,

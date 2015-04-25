@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>B:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>B:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -55,23 +55,19 @@
      <Compile Include="Assets\Scripts\Backup\WallSensors.cs" />
      <Compile Include="Assets\Scripts\CharController.cs" />
      <Compile Include="Assets\Scripts\CloudMove.cs" />
-     <Compile Include="Assets\Scripts\CollisionCheck.cs" />
-     <Compile Include="Assets\Scripts\GridAttached.cs" />
+     <Compile Include="Assets\Scripts\DirectionalCollision.cs" />
+     <Compile Include="Assets\Scripts\FSMGargoyle.cs" />
      <Compile Include="Assets\Scripts\LevelGenerator.cs" />
      <Compile Include="Assets\Scripts\MazeGeneration2.cs" />
      <Compile Include="Assets\Scripts\MazeSolver.cs" />
-     <Compile Include="Assets\Scripts\Node2.cs" />
-     <Compile Include="Assets\Scripts\NodeAttached.cs" />
      <Compile Include="Assets\Scripts\PlayerHealth.cs" />
-     <Compile Include="Assets\Scripts\Radar.cs" />
-     <Compile Include="Assets\Scripts\RadarSmall.cs" />
-     <Compile Include="Assets\Scripts\SeekerAStar.cs" />
+     <Compile Include="Assets\Scripts\RadarForPlayer.cs" />
      <Compile Include="Assets\Scripts\SeekerBasic.cs" />
      <Compile Include="Assets\Scripts\SmoothFollow.cs" />
      <Compile Include="Assets\Sprites\Tower\RemoveGravity.cs" />
      <None Include="Assets\maze.txt" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.2/UnityEngine.UI.dll</HintPath>
+ <HintPath>B:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.2/UnityEngine.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
