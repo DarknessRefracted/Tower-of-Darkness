@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\Radar.cs" />
      <Compile Include="Assets\Scripts\RadarSmall.cs" />
+     <Compile Include="Assets\Scripts\ScoreScript.cs" />
      <Compile Include="Assets\Scripts\SeekerAStar.cs" />
      <Compile Include="Assets\Scripts\SeekerBasic.cs" />
      <Compile Include="Assets\Scripts\SmoothFollow.cs" />
