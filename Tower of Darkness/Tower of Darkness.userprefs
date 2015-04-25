@@ -1,24 +1,11 @@
 ﻿<Properties>
-<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CharController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LevelGenerator.cs">
     <Files>
-      <File FileName="Assets\Scripts\MazeGeneration2.cs" Line="107" Column="50" />
-      <File FileName="Assets\Scripts\LevelGenerator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MazeSolver.cs" Line="15" Column="18" />
-      <File FileName="Assets\Scripts\CharController.cs" Line="24" Column="62" />
-=======
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CharController.cs">
-    <Files>
-      <File FileName="Assets\Scripts\DirectionalCollision.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ScoreScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\LevelGenerator.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LevelGenerator.cs" Line="101" Column="64" />
       <File FileName="Assets\Scripts\PlayerHealth.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CharController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Raycasting.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\FSMGargoyle.cs" Line="96" Column="40" />
->>>>>>> eba5b3b6775ac86b61cbe7d83d0e2b4b78eee184
+      <File FileName="Assets\Scripts\FSMGargoyle.cs" Line="12" Column="1" />
+      <File FileName="Assets\Scripts\RadarForPlayer.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
