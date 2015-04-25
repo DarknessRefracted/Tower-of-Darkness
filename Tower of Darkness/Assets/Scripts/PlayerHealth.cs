@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
-		if (col.gameObject.tag == "TreasureChest") {
+		if (col.gameObject.tag == "Gargoyle") {
 			damagePlayer(50);
 			Debug.Log ("Player damaged by: " + col.gameObject.tag + "! Health: " + healthBar.value);
 		}

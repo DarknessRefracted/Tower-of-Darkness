@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MazeGeneration2 : MonoBehaviour {
 	
-	enum Cell{OPEN, CLOSED, CROSS};
+	enum Cell{OPEN, CLOSED, CROSS, START, FINISH};
 	int [,] maze;
 	
 	public int columns;
@@ -12,11 +12,12 @@ public class MazeGeneration2 : MonoBehaviour {
 	//Maze object prefabs
 	public GameObject mazeBackground;
 	public GameObject mazeWallBlock;
+	public GameObject mazeSpecialBlock;
 
 	//Maze objects produced in the game. Use these so that we can quickly delete them after the maze is solved
 	public GameObject objBackground;
 	public GameObject[,] objSpaces;
-	public GameObject[,] objWalls;
+	public GameObject[] objWalls;
 
 	//LevelGenerator object in order to access height-related values/functions for placing the maze onto the screen
 	public LevelGenerator scrLevGen;
@@ -32,6 +33,8 @@ public class MazeGeneration2 : MonoBehaviour {
 	}
 
 	void produceMaze(){
+		float mazeBlockSize;
+		Vector3 scale;
 		//Rows and columns must be even for the algorithm to work.
 			//If they are not even, then it is best to double the amounts, because it will allow for the same number of filled rows and
 				// columns, but with the necessary amount of unfilled rows and columns
@@ -40,9 +43,16 @@ public class MazeGeneration2 : MonoBehaviour {
 		if(columns % 2 == 1)
 			columns *= 2;
 
+		//Require columns to equal rows
+		columns = rows;
+
+		//Determine size of the maze blocks to show
+			//The total width of the maze is 7.5
+		mazeBlockSize = (float)7.5 / columns;
+
 		maze = new int[rows, columns];
 		objSpaces = new GameObject[rows, columns];
-		objWalls = new GameObject[2, rows];
+		objWalls = new GameObject[4];
 
 		//Initialize the maze
 		for (int i=0; i<rows; ++i) {
@@ -54,45 +64,47 @@ public class MazeGeneration2 : MonoBehaviour {
 		//Generate the maze
 		divideArea (0, columns-1, 0);
 
+		//Add the start and finish
+		maze [0, 0] = (int)Cell.START;
+		maze [rows-1, columns-1] = (int)Cell.FINISH;
+
 		//TODO - Freeze the game
+			//Character movement is handled by script CharController, which calls this function
 
 		//Display the maze
+		//Display the background and outer walls of the maze
 		objBackground = (GameObject) Instantiate (mazeBackground, 
-		                                       new Vector3(scrLevGen.start.transform.position.x, 
-		            							scrLevGen.player.transform.position.y - (float) 0.5, 
-		            							scrLevGen.start.transform.position.z),
-		                                       Quaternion.identity);
+		            new Vector3(scrLevGen.start.transform.position.x, 
+		            scrLevGen.player.transform.position.y - (float) 0.5, 
+		            scrLevGen.start.transform.position.z),
+		            Quaternion.identity);
 
 		for(int i=0; i<rows; ++i){
-			objWalls[0, i] =  (GameObject) Instantiate(mazeWallBlock, 
-			            		new Vector3(objBackground.transform.position.x  - (float) 3.75, 
-			            		objBackground.transform.position.y + (float)0.25 * i - (float) 3.5, -1), 
-			            		Quaternion.identity);
-			objWalls[1, i] =  (GameObject) Instantiate(mazeWallBlock, 
-			            		new Vector3(objBackground.transform.position.x  - (float) 3.5 + (float) 0.25 * columns, 
-			            		objBackground.transform.position.y + (float)0.25 * i - (float) 3.5, -1), 
-			            		Quaternion.identity);
 
 			for(int j=0; j<columns; ++j){
 				if(maze[i,j] == (int) Cell.OPEN){
 					//If it is an open cell, then set that index of the array to null
 					objSpaces[i,j] = null;
-				   /*if(i == 0 && j == 0){
-						Instantiate(mazeWallBlock, 
-						            new Vector3(mazeObject.transform.position.x + (float)0.30 - (float) 3.5, 
-						            mazeObject.transform.position.y + (float)0.30 - (float) 3.5, -1), 
-						            Quaternion.identity);}
-					else if (i==rows-1 && j == columns - 1){
-						Instantiate(mazeWallBlock, 
-						            new Vector3(mazeObject.transform.position.x + (float)0.25 * i - (float) 3.5, 
-						            mazeObject.transform.position.y + (float)0.25 * j - (float) 3.5, -1), 
-						            Quaternion.identity);}*/
+				}
+				else if(maze[i,j] == (int) Cell.CLOSED || maze[i,j] == (int) Cell.CROSS){
+					objSpaces[i,j] = (GameObject) Instantiate(mazeWallBlock, 
+					            	new Vector3(objBackground.transform.position.x + mazeBlockSize * j - (float) 3.5, 
+					            		objBackground.transform.position.y + mazeBlockSize * i - (float) 3.5, -1), 
+					            		Quaternion.identity);
+					scale = objSpaces[i,j].transform.localScale;
+					scale.x = mazeBlockSize * 4;
+					scale.y = mazeBlockSize * 4;
+					objSpaces[i,j].transform.localScale = scale;
 				}
 				else{
-					objSpaces[i,j] = (GameObject) Instantiate(mazeWallBlock, 
-					            	new Vector3(objBackground.transform.position.x + (float)0.25 * j - (float) 3.5, 
-					            		objBackground.transform.position.y + (float)0.25 * i - (float) 3.5, -1), 
-					            		Quaternion.identity);
+					objSpaces[i,j] = (GameObject) Instantiate(mazeSpecialBlock, 
+				                      	new Vector3(objBackground.transform.position.x + mazeBlockSize * j - (float) 3.5, 
+					            		objBackground.transform.position.y + mazeBlockSize * i - (float) 3.5, -1), 
+					                    Quaternion.identity);
+					scale = objSpaces[i,j].transform.localScale;
+					scale.x = mazeBlockSize * 4;
+					scale.y = mazeBlockSize * 4;
+					objSpaces[i,j].transform.localScale = scale;
 				}
 			}
 		}
@@ -102,15 +114,19 @@ public class MazeGeneration2 : MonoBehaviour {
 
 	public void deleteMaze(){
 		//Delete the entirety of the maze
+		GameObject.Destroy(objWalls[0]);
+		GameObject.Destroy(objWalls[1]);
+		GameObject.Destroy(objWalls[2]);
+		GameObject.Destroy(objWalls[3]);
+
 		for(int i=0; i<rows; ++i){
 			//Delete walls
-			GameObject.Destroy(objWalls[0, i]);
-			GameObject.Destroy(objWalls[1, i]);
 
 			for(int j=0; j<columns; ++j){
 				//Delete whatever block was at this space. If it is null, then skip it
 				if(objSpaces[i,j] != null){
 					GameObject.Destroy(objSpaces[i, j]);
+					objSpaces[i, j] = null;
 				}
 			}
 		}
