@@ -20,11 +20,8 @@ public class PlayerHealth : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col) {
 		if (col.gameObject.tag == "Gargoyle") {
-<<<<<<< HEAD
 			damagePlayer(50);
-=======
 			damagePlayer(20);
->>>>>>> eba5b3b6775ac86b61cbe7d83d0e2b4b78eee184
 			Debug.Log ("Player damaged by: " + col.gameObject.tag + "! Health: " + healthBar.value);
 		}
 
