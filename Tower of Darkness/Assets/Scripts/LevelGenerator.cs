@@ -17,6 +17,7 @@ public class LevelGenerator : MonoBehaviour {
 	public float distanceBetweenLevels;//3.25
 
 	//Igor's added variables
+	public bool spawnGhosts = true;
 	public GameObject ghost;
 	public GameObject gargoyle;
 	public int chestChance;
@@ -103,10 +104,13 @@ public class LevelGenerator : MonoBehaviour {
 				tempVectorPos = GetNextLevelPosition(currentHeight);
 				Instantiate (lev_sright, tempVectorPos, Quaternion.identity);
 				hole_chance++;
-				if(Random.Range (0,1) < ghostChance)
+				if(Random.Range (0,5) < ghostChance)
 				{
-					Instantiate(ghost, new Vector3(tempVectorPos.x + Random.Range (0,20),tempVectorPos.y + Random.Range (0,20), 0), Quaternion.identity);
-					ghostChance = 1;
+					if(spawnGhosts)
+					{
+						Instantiate(ghost, new Vector3(tempVectorPos.x + Random.Range (0,20),tempVectorPos.y + Random.Range (0,20), 0), Quaternion.identity);
+						ghostChance = 1;
+					}
 				} 
 				else
 				{

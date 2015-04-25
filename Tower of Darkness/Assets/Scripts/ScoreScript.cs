@@ -5,10 +5,13 @@ public class ScoreScript : MonoBehaviour {
 
 	float playerScore = 0;
 	GUIStyle style = new GUIStyle();
+	Vector3 previousPosition;
 
 	void Update () 
 	{
-		playerScore += Time.deltaTime;
+		if(transform.position.y > previousPosition.y)
+			playerScore += Time.deltaTime;
+		previousPosition = transform.position;
 	}
 	
 	public void IncreaseScore(int amount)

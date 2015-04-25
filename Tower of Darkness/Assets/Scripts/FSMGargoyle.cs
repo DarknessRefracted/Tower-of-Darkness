@@ -83,7 +83,9 @@ public class FSMGargoyle : MonoBehaviour {
 		float finishTime = startCharge + 1f;
 		while(Time.time < finishTime)
 		{
+			
 			transform.Translate(-Vector3.right * speed/10 * Time.deltaTime);
+			//transform.Translate(-Vector3.right * speed/10 * Time.deltaTime);
 			yield return null; //will yield for update of frames
 		}
 
@@ -91,7 +93,7 @@ public class FSMGargoyle : MonoBehaviour {
 	IEnumerator chargeRight()
 	{
 		float startCharge = Time.time;
-		float finishTime = startCharge + 1f;
+		float finishTime = startCharge + 1f; 
 		while(Time.time < finishTime)
 		{
 			transform.Translate(Vector3.right * speed/10 * Time.deltaTime);
