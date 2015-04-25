@@ -18,13 +18,13 @@ public class ScoreScript : MonoBehaviour {
 	
 	void OnDisable()
 	{
-		PlayerPrefs.SetInt("Score",(int)(playerScore*100));
+		PlayerPrefs.SetInt("Score",(int)(playerScore * 100));
 	}
 	
 	void OnGUI()
 	{
 		style.fontSize = 30;
 		style.font = (Font)Resources.Load("Something Strange");
-		GUI.Label (new Rect (55, 565, 100, 30), "Score: " + (int)(playerScore*100),style);
+		GUI.Label (new Rect (10, 10, 100, 30), "Score: " + (int)(playerScore * 100),style);
 	}
 }
