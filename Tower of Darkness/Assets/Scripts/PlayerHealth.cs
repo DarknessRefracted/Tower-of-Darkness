@@ -19,11 +19,23 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
-		if (col.gameObject.tag == "TreasureChest") {
-			damagePlayer(50);
+		if (col.gameObject.tag == "Gargoyle") {
+			damagePlayer(20);
 			Debug.Log ("Player damaged by: " + col.gameObject.tag + "! Health: " + healthBar.value);
 		}
+
 	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+
+		if(other.gameObject.tag == "Ghost"){
+			damagePlayer(15);
+			Debug.Log ("Player damaged by: " + other.gameObject.tag + "! Health: " + healthBar.value);
+		}
+		
+	}
+
+
 
 	void damagePlayer(int damageAmount){
 		healthBar.value -= damageAmount;

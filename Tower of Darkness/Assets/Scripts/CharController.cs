@@ -23,7 +23,7 @@ public class CharController : MonoBehaviour {
 
 	//Variable is set to true when we need to totally stop the subject
 	private bool freezeMovement;
-
+	public DirectionalCollision scriptCollision;
 	//Animation states
 	private int currentAnimationState;
 	private enum moves{
@@ -35,6 +35,7 @@ public class CharController : MonoBehaviour {
 	};
 
 	void Start(){
+		scriptCollision = GetComponent<DirectionalCollision>();
 		//rigidbody2D = GetComponent<Rigidbody2D>();
 		tower = GameObject.FindGameObjectWithTag ("Tower");
 		mazeScript = (MazeGeneration2) tower.GetComponent<MazeGeneration2>();
