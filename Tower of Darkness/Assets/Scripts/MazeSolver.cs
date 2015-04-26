@@ -8,7 +8,7 @@ public class MazeSolver : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//Start the computer solver. If this slow-going solver beats the player, the player loses
-		ComputerSolveMaze ();
+		//ComputerSolveMaze ();
 	}
 	
 	// Update is called once per frame

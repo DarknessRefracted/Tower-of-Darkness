@@ -58,7 +58,7 @@ public class CharController : MonoBehaviour {
 		if(!freezeMovement){
 			handleMovement();
 		}
-		else if(Input.GetKey(KeyCode.M)){
+		else if(Input.GetKey(KeyCode.M) || solverScript.playerFinished){
 			//Delete the maze
 			mazeScript.deleteMaze();
 
@@ -95,11 +95,6 @@ public class CharController : MonoBehaviour {
 					candoublejump = false;
 					rigidbody2d.velocity = new Vector2 (rigidbody2D.velocity.x, 0);
 					rigidbody2D.AddForce (new Vector2 (0, jumpForce));
-					
-					if(pickLeft)
-						currentAnimationState = (int)moves.JUMPLEFT_DOWN;
-					else
-						currentAnimationState = (int)moves.JUMPRIGHT_DOWN;
 				}
 			}
 		}
@@ -146,7 +141,8 @@ public class CharController : MonoBehaviour {
 				//Generate the maze
 				mazeScript.startMazeGeneration();
 
-				//Suspend movement--movmement is allowed when the maze has been completed by player or computer
+				//Suspend movement--movmement is allowed when the maze has been completed by player, user presses
+					// the 'M' key, or player has taken damage
 				suspendMovement();
 			}
 
