@@ -3,9 +3,13 @@ using System.Collections;
 
 public class ScoreScript : MonoBehaviour {
 
-	public static float playerScore = 0;
+	public static float playerScore;
 	GUIStyle style = new GUIStyle();
 	Vector3 previousPosition;
+
+	void Start() {
+		playerScore = 0;
+	}
 
 	void Update () 
 	{
