@@ -19,10 +19,6 @@ public class PlayerHealth : MonoBehaviour {
 		}
 	}
 
-	void Update(){
-
-	}
-
 	void OnCollisionEnter2D(Collision2D col) {
 		if (col.gameObject.tag == "Gargoyle") {
 			damagePlayer(20);
@@ -41,7 +37,7 @@ public class PlayerHealth : MonoBehaviour {
 
 
 
-	void damagePlayer(int damageAmount){
+	public void damagePlayer(int damageAmount){
 		if(!scriptController.freezeMovement)
 		{
 		healthBar.value -= damageAmount;
