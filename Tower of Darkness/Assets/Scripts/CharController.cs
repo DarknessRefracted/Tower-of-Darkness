@@ -22,7 +22,7 @@ public class CharController : MonoBehaviour {
 	private GameObject recentChest;
 
 	//Variable is set to true when we need to totally stop the subject
-	private bool freezeMovement;
+	public bool freezeMovement;
 	public DirectionalCollision scriptCollision;
 	//Animation states
 	private int currentAnimationState;
