@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ScoreScript : MonoBehaviour {
 
-	float playerScore = 0;
+	public static float playerScore = 0;
 	GUIStyle style = new GUIStyle();
 	Vector3 previousPosition;
 
@@ -28,6 +28,10 @@ public class ScoreScript : MonoBehaviour {
 	{
 		style.fontSize = 30;
 		style.font = (Font)Resources.Load("Something Strange");
-		GUI.Label (new Rect (10, 10, 100, 30), "Score: " + (int)(playerScore * 100),style);
+		GUI.Label (new Rect (20, 20, 100, 30), "Score: " + (int)(playerScore * 100),style);
+	}
+
+	public static int getScore(){
+		return (int)(playerScore * 100);
 	}
 }
