@@ -53,12 +53,18 @@ public class SmoothFollow : MonoBehaviour {
 		lastTargetPosition = target.position;		
 	}
 	
-	void FindPlayer () {
+	public void FindPlayer () {
 		if (nextTimeToSearch <= Time.time) {
 			GameObject searchResult = GameObject.FindGameObjectWithTag ("Player");
 			if (searchResult != null)
 				target = searchResult.transform;
 			nextTimeToSearch = Time.time + 0.5f;
 		}
+	}
+
+	public void CutTo(GameObject obj){
+		if (obj != null)
+			target = obj.transform;
+		nextTimeToSearch = Time.time + 0.5f;
 	}
 }

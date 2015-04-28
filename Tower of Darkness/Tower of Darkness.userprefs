@@ -1,4 +1,5 @@
 ﻿<Properties>
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LevelGenerator.cs">
     <Files>
@@ -6,6 +7,12 @@
       <File FileName="Assets\Scripts\PlayerHealth.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\FSMGargoyle.cs" Line="12" Column="1" />
       <File FileName="Assets\Scripts\RadarForPlayer.cs" Line="1" Column="1" />
+=======
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\Users\igrovirus\Desktop\Tower of Darkness-1-1\Tower of Darkness\Assets\Scripts\PlayerHealth.cs">
+    <Files>
+      <File FileName="..\..\..\Users\igrovirus\Desktop\Tower of Darkness-1-1\Tower of Darkness\Assets\Scripts\PlayerHealth.cs" Line="3" Column="1" />
+>>>>>>> origin/BackuptCommit
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

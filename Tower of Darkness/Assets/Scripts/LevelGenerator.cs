@@ -98,7 +98,10 @@ public class LevelGenerator : MonoBehaviour {
 				Instantiate (lev_sright_hole, tempVectorPos, Quaternion.identity);
 				//Reset the hole chance
 				hole_chance = default_hole_chance;
-				Instantiate (gargoyle, tempVectorPos, Quaternion.identity);
+				if(Random.Range(0, 10) > 7)
+				{
+					Instantiate (gargoyle, tempVectorPos, Quaternion.identity);
+				}
 			}
 			else{
 				tempVectorPos = GetNextLevelPosition(currentHeight);
@@ -132,9 +135,14 @@ public class LevelGenerator : MonoBehaviour {
 
 			//Decide whether or not to remove the opposite wall
 			if(Random.Range(0, 10) < hole_chance){
-				Instantiate (lev_sleft_hole, GetNextLevelPosition(currentHeight), Quaternion.identity);
+				tempVectorPos = GetNextLevelPosition(currentHeight);
+				Instantiate (lev_sleft_hole, tempVectorPos, Quaternion.identity);
 				//Reset the hole chance
 				hole_chance = default_hole_chance;
+				if(Random.Range(0, 10) > 7)
+				{
+					Instantiate (gargoyle, tempVectorPos, Quaternion.identity);
+				}
 			}
 			else{
 				Instantiate (lev_sleft, GetNextLevelPosition(currentHeight), Quaternion.identity);
