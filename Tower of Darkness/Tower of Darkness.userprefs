@@ -2,15 +2,19 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LevelGenerator.cs">
     <Files>
-      <File FileName="Assets\Scripts\CharController.cs" Line="119" Column="46" />
-      <File FileName="Assets\Scripts\MazeSolver.cs" Line="22" Column="20" />
-      <File FileName="Assets\Scripts\LevelGenerator.cs" Line="158" Column="41" />
-      <File FileName="Assets\Scripts\MazePilotController.cs" Line="19" Column="91" />
+      <File FileName="Assets\Scripts\LevelGenerator.cs" Line="109" Column="21" />
+      <File FileName="Assets\Scripts\ScoreScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MazeSolver.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerHealth.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MazeGeneration2.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\FSMGargoyle.cs" Line="86" Column="3" />
-      <File FileName="Assets\Scripts\SeekerBasic.cs" Line="19" Column="37" />
-      <File FileName="Assets\Scripts\PlayerHealth.cs" Line="15" Column="5" />
+      <File FileName="Assets\Scripts\MazePilotController.cs" Line="1" Column="1" />
+      <File FileName="d:\Users\igrovirus\Desktop\Tower of Darkness-1-1\Tower of Darkness\Assets\MainMenu\finalScore.cs" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
