@@ -40,6 +40,7 @@
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
 <<<<<<< HEAD
+<<<<<<< HEAD
 	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
@@ -50,6 +51,12 @@
 	<Reference Include="UnityEditor">
 	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 >>>>>>> origin/BackuptCommit
+=======
+	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+>>>>>>> origin/BackuptCommit_Igor
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -79,10 +86,14 @@
      <None Include="Assets\maze.txt" />
  <Reference Include="UnityEngine.UI">
 <<<<<<< HEAD
+<<<<<<< HEAD
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
 =======
  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
 >>>>>>> origin/BackuptCommit
+=======
+ <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
+>>>>>>> origin/BackuptCommit_Igor
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

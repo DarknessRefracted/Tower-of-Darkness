@@ -483,7 +483,7 @@ public class MazeGeneration2 : MonoBehaviour {
 			}
 			testMessage += "6\n";
 		}
-		System.IO.File.WriteAllText("C:\\Users\\Kevin Strileckis\\Documents\\Tower-of-Darkness\\Tower of Darkness\\Assets\\maze.txt", testMessage);
+		//System.IO.File.WriteAllText("C:\\Users\\Kevin Strileckis\\Documents\\Tower-of-Darkness\\Tower of Darkness\\Assets\\maze.txt", testMessage);
 		Debug.Log (testMessage);
 	}
 

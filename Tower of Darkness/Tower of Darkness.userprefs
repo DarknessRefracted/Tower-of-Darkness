@@ -3,6 +3,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LevelGenerator.cs">
     <Files>
+<<<<<<< HEAD
       <File FileName="Assets\Scripts\LevelGenerator.cs" Line="101" Column="64" />
       <File FileName="Assets\Scripts\PlayerHealth.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\FSMGargoyle.cs" Line="12" Column="1" />
@@ -13,7 +14,21 @@
     <Files>
       <File FileName="..\..\..\Users\igrovirus\Desktop\Tower of Darkness-1-1\Tower of Darkness\Assets\Scripts\PlayerHealth.cs" Line="3" Column="1" />
 >>>>>>> origin/BackuptCommit
+=======
+      <File FileName="Assets\Scripts\LevelGenerator.cs" Line="109" Column="21" />
+      <File FileName="Assets\Scripts\ScoreScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MazeSolver.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerHealth.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MazeGeneration2.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MazePilotController.cs" Line="1" Column="1" />
+      <File FileName="d:\Users\igrovirus\Desktop\Tower of Darkness-1-1\Tower of Darkness\Assets\MainMenu\finalScore.cs" Line="1" Column="1" />
+>>>>>>> origin/BackuptCommit_Igor
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

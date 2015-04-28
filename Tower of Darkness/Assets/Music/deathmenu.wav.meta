@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: f2f3fe2c57660bf4694c563e47477eae
+=======
+guid: 730ee88f59d16bb4c8a53bc86e668401
+>>>>>>> origin/BackuptCommit_Igor
 AudioImporter:
   serializedVersion: 4
   format: -1

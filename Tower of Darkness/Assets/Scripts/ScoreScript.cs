@@ -31,11 +31,19 @@ public class ScoreScript : MonoBehaviour {
 	void OnGUI()
 	{
 		style.fontSize = 30;
+		style.normal.textColor = Color.white;
 		style.font = (Font)Resources.Load("Something Strange");
 		GUI.Label (new Rect (20, 20, 100, 30), "Score: " + (int)(playerScore * 100),style);
 	}
 
 	public static int getScore(){
 		return (int)(playerScore * 100);
+<<<<<<< HEAD
+=======
+	}
+
+	public void setScore(int increaseBy){
+		playerScore += increaseBy;
+>>>>>>> origin/BackuptCommit_Igor
 	}
 }
