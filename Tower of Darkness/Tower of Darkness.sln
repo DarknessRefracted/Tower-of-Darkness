@@ -17,22 +17,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-																																																																																																							GlobalSection(MonoDevelopProperties) = preSolution
-=======
-																																																																																																																			GlobalSection(MonoDevelopProperties) = preSolution
->>>>>>> eba5b3b6775ac86b61cbe7d83d0e2b4b78eee184
-=======
-																																																																																																																																								GlobalSection(MonoDevelopProperties) = preSolution
->>>>>>> origin/BackuptCommit
-=======
-																																																																																																																																																GlobalSection(MonoDevelopProperties) = preSolution
->>>>>>> origin/BackuptCommit_Igor
-=======
-																																																																																																																																																		GlobalSection(MonoDevelopProperties) = preSolution
->>>>>>> origin/BackuptCommit_Igor
+																																																																																																																																																					GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

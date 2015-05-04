@@ -64,21 +64,12 @@ public class CharController : MonoBehaviour {
 		if(!freezeMovement){
 			handleMovement();
 		}
-<<<<<<< HEAD
-		//If a maze has been solved, restore movement
-		else if(Input.GetKey(KeyCode.M)){
-=======
 		else if(Input.GetKey(KeyCode.M) || solverScript.playerFinished){
->>>>>>> origin/BackuptCommit
 			//Delete the maze
 			mazeScript.deleteMaze();
 
 			//Delete the chest
 			GameObject.Destroy(recentChest);
-
-			//Make it harder for next time
-			mazeScript.columns += 2;
-			mazeScript.rows += 2;
 
 			//Allow movement again
 			allowMovement();
@@ -150,22 +141,16 @@ public class CharController : MonoBehaviour {
 		else{
 			//onWall = false;
 
-			if(!freezeMovement && other.gameObject.CompareTag("TreasureChest")){
-				//Suspend movement--movmement is allowed when the maze has been completed by player or computer
-				suspendMovement();
-
+			if(other.gameObject.CompareTag("TreasureChest")){
 				//Save the object for deleting later
 				recentChest = other.gameObject;
 
 				//Generate the maze
 				mazeScript.startMazeGeneration();
-<<<<<<< HEAD
-=======
 
 				//Suspend movement--movmement is allowed when the maze has been completed by player or if user presses
 					// the 'M' key
 				suspendMovement();
->>>>>>> origin/BackuptCommit
 			}
 
 		}

@@ -15,19 +15,12 @@ public class MazeGeneration2 : MonoBehaviour {
 	public GameObject mazeBackground;
 	public GameObject mazeWallBlock;
 	public GameObject mazeSpecialBlock;
-<<<<<<< HEAD
-=======
 
 	public GameObject mazePilot;
->>>>>>> origin/BackuptCommit
 
 	//Maze objects produced in the game. Use these so that we can quickly delete them after the maze is solved
 	public GameObject objBackground;
 	public GameObject[,] objSpaces;
-<<<<<<< HEAD
-	public GameObject[] objWalls;
-=======
->>>>>>> origin/BackuptCommit
 
 	//LevelGenerator object in order to access height-related values/functions for placing the maze onto the screen
 	public LevelGenerator scrLevGen;
@@ -75,10 +68,6 @@ public class MazeGeneration2 : MonoBehaviour {
 
 		maze = new int[rows, columns];
 		objSpaces = new GameObject[rows, columns];
-<<<<<<< HEAD
-		objWalls = new GameObject[4];
-=======
->>>>>>> origin/BackuptCommit
 
 		//Initialize the maze
 		for (int i=0; i<rows; ++i) {
@@ -100,18 +89,11 @@ public class MazeGeneration2 : MonoBehaviour {
 		//Display the maze
 		//Display the background and outer walls of the maze
 		objBackground = (GameObject) Instantiate (mazeBackground, 
-<<<<<<< HEAD
-		            new Vector3(scrLevGen.start.transform.position.x, 
-		            scrLevGen.player.transform.position.y - (float) 0.5, 
-		            scrLevGen.start.transform.position.z),
-		            Quaternion.identity);
-=======
 		            new Vector3(scrLevGen.start.transform.position.x + 11.0f,
 		            scrLevGen.player.transform.position.y - 0.5f,
 		            scrLevGen.start.transform.position.z),
 		            Quaternion.identity);
 
->>>>>>> origin/BackuptCommit
 
 		for(int i=0; i<rows; ++i){
 
@@ -122,13 +104,8 @@ public class MazeGeneration2 : MonoBehaviour {
 				}
 				else if(maze[i,j] == (int) Cell.CLOSED || maze[i,j] == (int) Cell.CROSS){
 					objSpaces[i,j] = (GameObject) Instantiate(mazeWallBlock, 
-<<<<<<< HEAD
-					            	new Vector3(objBackground.transform.position.x + mazeBlockSize * j - (float) 3.5, 
-					            		objBackground.transform.position.y + mazeBlockSize * i - (float) 3.5, -1), 
-=======
 					            	new Vector3(objBackground.transform.position.x + mazeBlockSize * j - 3.5f,
 					            		objBackground.transform.position.y + mazeBlockSize * i - 3.5f, zValue), 
->>>>>>> origin/BackuptCommit
 					            		Quaternion.identity);
 					scale = objSpaces[i,j].transform.localScale;
 					scale.x = mazeBlockSize * 4;
@@ -136,16 +113,6 @@ public class MazeGeneration2 : MonoBehaviour {
 					objSpaces[i,j].transform.localScale = scale;
 				}
 				else{
-<<<<<<< HEAD
-					objSpaces[i,j] = (GameObject) Instantiate(mazeSpecialBlock, 
-				                      	new Vector3(objBackground.transform.position.x + mazeBlockSize * j - (float) 3.5, 
-					            		objBackground.transform.position.y + mazeBlockSize * i - (float) 3.5, -1), 
-					                    Quaternion.identity);
-					scale = objSpaces[i,j].transform.localScale;
-					scale.x = mazeBlockSize * 4;
-					scale.y = mazeBlockSize * 4;
-					objSpaces[i,j].transform.localScale = scale;
-=======
 					if(i==0){
 						objSpaces[i,j] = (GameObject) Instantiate(mazePilot, 
 				                      	new Vector3(objBackground.transform.position.x + mazeBlockSize * j - 3.5f, 
@@ -168,7 +135,6 @@ public class MazeGeneration2 : MonoBehaviour {
 						scale.y = mazeBlockSize * 4;
 						objSpaces[i,j].transform.localScale = scale;
 					}
->>>>>>> origin/BackuptCommit
 				}
 			}
 		}
@@ -178,14 +144,6 @@ public class MazeGeneration2 : MonoBehaviour {
 	}
 
 	public void deleteMaze(){
-<<<<<<< HEAD
-		//Delete the entirety of the maze
-		GameObject.Destroy(objWalls[0]);
-		GameObject.Destroy(objWalls[1]);
-		GameObject.Destroy(objWalls[2]);
-		GameObject.Destroy(objWalls[3]);
-
-=======
 		//First, shift the camera's focus back to the player
 		scrCamera.FindPlayer ();
 
@@ -194,7 +152,6 @@ public class MazeGeneration2 : MonoBehaviour {
 		scrSolver.cpuFinished = false;
 
 		//Now, delete the entirety of the maze
->>>>>>> origin/BackuptCommit
 		for(int i=0; i<rows; ++i){
 			//Delete walls
 

@@ -38,12 +38,9 @@ public class ScoreScript : MonoBehaviour {
 
 	public static int getScore(){
 		return (int)(playerScore * 100);
-<<<<<<< HEAD
-=======
 	}
 
 	public void setScore(int increaseBy){
 		playerScore += increaseBy;
->>>>>>> origin/BackuptCommit_Igor
 	}
 }

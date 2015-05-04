@@ -135,7 +135,7 @@ public class LevelGenerator : MonoBehaviour {
 						Instantiate(ghost, new Vector3(tempVectorPos.x + Random.Range (0,20),tempVectorPos.y + Random.Range (0,20), 0), Quaternion.identity);
 						ghostChance = 1;
 					}
-				}
+				} 
 				else
 				{
 					ghostChance++;
@@ -184,6 +184,7 @@ public class LevelGenerator : MonoBehaviour {
 		if(Random.Range(0,100) < chestChance){
 			Instantiate(treasureChest, new Vector3(temp.transform.position.x, temp.transform.position.y + .5F)
 			            , Quaternion.identity);
+				treasureChest.gameObject.tag = "TreasureChest";
 		}
 
 

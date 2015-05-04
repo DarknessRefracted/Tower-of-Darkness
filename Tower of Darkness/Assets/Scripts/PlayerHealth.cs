@@ -21,7 +21,6 @@ public class PlayerHealth : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col) {
 		if (col.gameObject.tag == "Gargoyle") {
-			damagePlayer(50);
 			damagePlayer(20);
 		}
 
