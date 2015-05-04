@@ -19,6 +19,7 @@ Global
 	EndGlobalSection
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 																																																																																																							GlobalSection(MonoDevelopProperties) = preSolution
 =======
 																																																																																																																			GlobalSection(MonoDevelopProperties) = preSolution
@@ -28,6 +29,9 @@ Global
 >>>>>>> origin/BackuptCommit
 =======
 																																																																																																																																																GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> origin/BackuptCommit_Igor
+=======
+																																																																																																																																																		GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> origin/BackuptCommit_Igor
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
