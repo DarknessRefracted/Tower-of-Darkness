@@ -69,6 +69,7 @@
      <Compile Include="Assets\Scripts\SeekerBasic.cs" />
      <Compile Include="Assets\Scripts\SmoothFollow.cs" />
      <Compile Include="Assets\Sprites\Tower\RemoveGravity.cs" />
+     <Compile Include="Assets\TEMP for merge.cs" />
      <None Include="Assets\maze.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
