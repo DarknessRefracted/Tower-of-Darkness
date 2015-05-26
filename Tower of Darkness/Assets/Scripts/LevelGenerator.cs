@@ -31,14 +31,10 @@ public class LevelGenerator : MonoBehaviour {
 
 	public GameObject player;
 	private GameObject towerBacking;
-	bool changeOnce = false;
-	bool changeTwice = false;
-	float changeTime = 0.0f;
 
 	// Use this for initialization
 	void Start () {
 		GameObject temp;
-		Camera.main.clearFlags = CameraClearFlags.SolidColor;
 
 		player = GameObject.FindGameObjectWithTag ("Player");
 		towerBacking = GameObject.FindGameObjectWithTag ("TowerBacking");
@@ -76,22 +72,6 @@ public class LevelGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!changeOnce) {
-
-			Camera.main.backgroundColor = Color.Lerp(Color.blue, Color.red, changeTime);
-			if(Camera.main.backgroundColor == Color.red){
-				changeOnce = true;
-				changeTime = 0f;
-			}
-		}
-		if (!changeTwice && changeOnce) {
-			if(Camera.main.backgroundColor == Color.black){
-				changeTwice = true;
-				
-			}
-			Camera.main.backgroundColor = Color.Lerp(Color.red, Color.black, changeTime);
-		}
-
 		//Figure out if we need a new level generated. This should occur whenever the player is with one level distance 
 			// of the currentHeight
 		if(player.transform.position.y > (currentHeight - distanceBetweenLevels)){
@@ -106,7 +86,6 @@ public class LevelGenerator : MonoBehaviour {
 
 	void MakeNextLevel(){
 		levelCounter++;
-		changeTime += 0.02f;
 		GameObject temp;
 
 		//Generate the next level
@@ -119,10 +98,7 @@ public class LevelGenerator : MonoBehaviour {
 				Instantiate (lev_sright_hole, tempVectorPos, Quaternion.identity);
 				//Reset the hole chance
 				hole_chance = default_hole_chance;
-				if(Random.Range(0, 10) > 7)
-				{
-					Instantiate (gargoyle, tempVectorPos, Quaternion.identity);
-				}
+				Instantiate (gargoyle, tempVectorPos, Quaternion.identity);
 			}
 			else{
 				tempVectorPos = GetNextLevelPosition(currentHeight);
@@ -156,14 +132,9 @@ public class LevelGenerator : MonoBehaviour {
 
 			//Decide whether or not to remove the opposite wall
 			if(Random.Range(0, 10) < hole_chance){
-				tempVectorPos = GetNextLevelPosition(currentHeight);
-				Instantiate (lev_sleft_hole, tempVectorPos, Quaternion.identity);
+				Instantiate (lev_sleft_hole, GetNextLevelPosition(currentHeight), Quaternion.identity);
 				//Reset the hole chance
 				hole_chance = default_hole_chance;
-				if(Random.Range(0, 10) > 7)
-				{
-					Instantiate (gargoyle, tempVectorPos, Quaternion.identity);
-				}
 			}
 			else{
 				Instantiate (lev_sleft, GetNextLevelPosition(currentHeight), Quaternion.identity);
@@ -188,7 +159,6 @@ public class LevelGenerator : MonoBehaviour {
 		}
 
 
-	
 	}
 
 	//Function will add the distanceBeteweenLevels to the current_y, and return a Vector3 that has its y as the result,

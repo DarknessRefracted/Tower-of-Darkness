@@ -8,16 +8,14 @@ public class MazePilotController : MonoBehaviour {
 	public Rigidbody2D rb2d;
 
 	public MazeSolver solverScript;
-	public static ScoreScript scoreScript;
-	private GameObject player;
+
 	private Vector3 temp;
 
 	// Use this for initialization
 	void Start () {
 		if(movementSpeed >= 1)
 			movementSpeed *= 0.25f;
-		player = GameObject.FindWithTag ("Player");
-		scoreScript = player.GetComponent<ScoreScript> ();
+
 		solverScript = (MazeSolver)GameObject.FindWithTag ("Tower").GetComponent ("MazeSolver");
 		rb2d = GetComponent<Rigidbody2D> ();
 	}
@@ -42,9 +40,6 @@ public class MazePilotController : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other) {
 		if(other.gameObject.CompareTag("MazeFinish")){
 			solverScript.playerFinished = true;
-			scoreScript.IncreaseScore(10);
 		}
 	}
-
-
 }

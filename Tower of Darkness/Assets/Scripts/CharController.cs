@@ -22,15 +22,10 @@ public class CharController : MonoBehaviour {
 	private GameObject recentChest;
 
 	//Variable is set to true when we need to totally stop the subject
-	public bool freezeMovement;
+	private bool freezeMovement;
 	public DirectionalCollision scriptCollision;
-
 	//Animation states
 	private int currentAnimationState;
-
-	//Script for health
-	public PlayerHealth scrHealth;
-
 	private enum moves{
 		WALKLEFT, WALKRIGHT, 
 		JUMPLEFT_UP, JUMPLEFT_DOWN, JUMPRIGHT_UP, JUMPRIGHT_DOWN, 
@@ -45,7 +40,6 @@ public class CharController : MonoBehaviour {
 		tower = GameObject.FindGameObjectWithTag ("Tower");
 		mazeScript = (MazeGeneration2) tower.GetComponent<MazeGeneration2>();
 		solverScript = (MazeSolver) tower.GetComponent<MazeSolver> ();
-		scrHealth = (PlayerHealth)GetComponent<PlayerHealth> ();
 
 		freezeMovement = false;
 
@@ -136,7 +130,6 @@ public class CharController : MonoBehaviour {
 		}
 		else if(other.gameObject.CompareTag("Catcher")){
 			//Kill character
-			scrHealth.damagePlayer(100);
 		}
 		else{
 			//onWall = false;
@@ -148,8 +141,8 @@ public class CharController : MonoBehaviour {
 				//Generate the maze
 				mazeScript.startMazeGeneration();
 
-				//Suspend movement--movmement is allowed when the maze has been completed by player or if user presses
-					// the 'M' key
+				//Suspend movement--movmement is allowed when the maze has been completed by player, user presses
+					// the 'M' key, or player has taken damage
 				suspendMovement();
 			}
 
@@ -169,7 +162,6 @@ public class CharController : MonoBehaviour {
 		}
 		else if(other.gameObject.CompareTag("Catcher")){
 			//Kill character
-
 		}
 		/*else{
 			onWall = false;

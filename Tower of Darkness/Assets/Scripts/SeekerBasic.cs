@@ -4,35 +4,19 @@ using System.Collections;
 public class SeekerBasic : MonoBehaviour {
 
 
-	private float moveSpeed = 1f;
+	public float moveSpeed;
 	//public float turnSpeed;
 	private Vector3 moveDirection;
 	//public Rigidbody2D rigidbody2d;
 	private GameObject player;
-	public CharController scriptController;
-	public LevelGenerator scriptLevelGen;
-	private bool speedIncreased = false;
-	GameObject tower;
 	void Start () {
-		tower = GameObject.FindWithTag("Tower");
 		player = GameObject.FindWithTag ("Player");
-		scriptController = player.GetComponent<CharController>();
-		scriptLevelGen = tower.GetComponent<LevelGenerator>();
+		Debug.Log ("Player position: " + player.transform.position + ".");
 	}
 	
 
 	void Update () {
 		// 1
-		if(!scriptController.freezeMovement){
-			if(scriptLevelGen.levelCounter % 5 == 0 && !speedIncreased)
-			{
-				moveSpeed += 0.2f;
-				speedIncreased = true;
-			}else if (scriptLevelGen.levelCounter % 5 != 0){
-				speedIncreased = false;
-			}
-
-
 		Vector3 currentPosition = transform.position;
 		// 2
 
@@ -47,6 +31,12 @@ public class SeekerBasic : MonoBehaviour {
 		
 		Vector3 target = moveDirection * moveSpeed + currentPosition;
 		transform.position = Vector3.Lerp( currentPosition, target, Time.deltaTime );
-		}
+		//Debug.Log ("Current " + transform.position + ". Moving to " + target + ".");
+		//float targetAngle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+		//transform.rotation = 
+			//Quaternion.Slerp( transform.rotation, 
+			               //  Quaternion.Euler( 0, 0, targetAngle ), 
+			                // turnSpeed * Time.deltaTime );
 	}
+	
 }
