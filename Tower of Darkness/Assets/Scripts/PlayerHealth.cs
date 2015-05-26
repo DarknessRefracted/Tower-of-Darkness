@@ -5,23 +5,23 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour {
 
 	Slider healthBar;
-
+	GameObject player;
+	public CharController scriptController;
+	public MazeSolver solverScript;
 	// Use this for initialization
 	void Start () {
 		GameObject temp = GameObject.Find ("HealthBar");
+		player = GameObject.FindWithTag ("Player");
+		//solverScript = (MazeSolver)GameObject.FindWithTag ("Tower").GetComponent ("MazeSolver");
+		scriptController = player.GetComponent<CharController>();
 		if (temp != null) {
 			healthBar = temp.GetComponent<Slider>();
 		}
 	}
 
-	void Update(){
-
-	}
-
 	void OnCollisionEnter2D(Collision2D col) {
 		if (col.gameObject.tag == "Gargoyle") {
 			damagePlayer(20);
-			Debug.Log ("Player damaged by: " + col.gameObject.tag + "! Health: " + healthBar.value);
 		}
 
 	}
@@ -30,18 +30,21 @@ public class PlayerHealth : MonoBehaviour {
 
 		if(other.gameObject.tag == "Ghost"){
 			damagePlayer(15);
-			Debug.Log ("Player damaged by: " + other.gameObject.tag + "! Health: " + healthBar.value);
+			Destroy(other.gameObject);
 		}
 		
 	}
 
 
 
-	void damagePlayer(int damageAmount){
+	public void damagePlayer(int damageAmount){
+		if(!scriptController.freezeMovement)
+		{
 		healthBar.value -= damageAmount;
 		if (healthBar.value <= 0) {
 			Application.LoadLevel("DeathScene");
 			//Debug.Log("NINJA DEAD!");
+		}
 		}
 	}
 }

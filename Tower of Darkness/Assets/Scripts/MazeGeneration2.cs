@@ -81,7 +81,7 @@ public class MazeGeneration2 : MonoBehaviour {
 
 		//Add the start and finish
 		maze [0, 0] = (int)Cell.START;
-		maze [rows-1, columns-1] = (int)Cell.FINISH;
+		maze [rows - 1, columns - 1] = (int)Cell.FINISH;
 
 		//TODO - Freeze the game
 			//Character movement is handled by script CharController, which calls this function
@@ -440,7 +440,7 @@ public class MazeGeneration2 : MonoBehaviour {
 			}
 			testMessage += "6\n";
 		}
-		System.IO.File.WriteAllText("C:\\Users\\Kevin Strileckis\\Documents\\Tower-of-Darkness\\Tower of Darkness\\Assets\\maze.txt", testMessage);
+		//System.IO.File.WriteAllText("C:\\Users\\Kevin Strileckis\\Documents\\Tower-of-Darkness\\Tower of Darkness\\Assets\\maze.txt", testMessage);
 		Debug.Log (testMessage);
 	}
 

@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="D:\D Documents\Game Projects\Tower-of-Darkness\Tower of Darkness\Assets\Scripts\LockPickingGenerator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LockPickingGenerator.cs">
     <Files>
-      <File FileName="D:\D Documents\Game Projects\Tower-of-Darkness\Tower of Darkness\Assets\Scripts\CharController.cs" Line="47" Column="64" />
-      <File FileName="D:\D Documents\Game Projects\Tower-of-Darkness\Tower of Darkness\Assets\Scripts\LockPickingGenerator.cs" Line="68" Column="3" />
-      <File FileName="D:\D Documents\Game Projects\Tower-of-Darkness\Tower of Darkness\Assets\Scripts\MazeGeneration2.cs" Line="168" Column="38" />
+      <File FileName="Assets\Scripts\CharController.cs" Line="47" Column="64" />
+      <File FileName="Assets\Scripts\LockPickingGenerator.cs" Line="68" Column="3" />
+      <File FileName="Assets\Scripts\MazeGeneration2.cs" Line="168" Column="38" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
