@@ -18,9 +18,9 @@ public class ScoreScript : MonoBehaviour {
 		previousPosition = transform.position;
 	}
 	
-	public void IncreaseScore(int amount)
+	public void IncreaseScore(int increaseBy)
 	{
-		playerScore += amount;
+		playerScore += increaseBy;
 	}
 	
 	void OnDisable()
@@ -40,7 +40,7 @@ public class ScoreScript : MonoBehaviour {
 		return (int)(playerScore * 100);
 	}
 
-	public void setScore(int increaseBy){
-		playerScore += increaseBy;
+	public void setScore(int amount){
+		playerScore = amount;
 	}
 }

@@ -13,6 +13,9 @@ public class CharController : MonoBehaviour {
 	private Animator animationController;
 	private bool pickLeft;
 
+	//Score script
+	public ScoreScript scrScore;
+
 	//Getting the lock picking stuffs
 	private GameObject tower;
 
@@ -32,6 +35,11 @@ public class CharController : MonoBehaviour {
 	//Script for health
 	public PlayerHealth scrHealth;
 
+
+	//Integer to hold what pin the user is currently controlling
+	int lockPinIndex;
+	Rigidbody2D rb2d;
+
 	private enum moves{
 		WALKLEFT, WALKRIGHT, 
 		JUMPLEFT_UP, JUMPLEFT_DOWN, JUMPRIGHT_UP, JUMPRIGHT_DOWN, 
@@ -46,6 +54,8 @@ public class CharController : MonoBehaviour {
 		tower = GameObject.FindGameObjectWithTag ("Tower");
 		scrLockPickGen = tower.GetComponent<LockPickingGenerator> ();
 		scrHealth = (PlayerHealth)GetComponent<PlayerHealth> ();
+		scrScore = (ScoreScript)GetComponent<ScoreScript> ();
+		lockPinIndex = 0;
 
 		freezeMovement = false;
 
@@ -64,15 +74,59 @@ public class CharController : MonoBehaviour {
 		if(!freezeMovement){
 			handleMovement();
 		}
-		else if(Input.GetKey(KeyCode.M) /*WIN CONDITION*/){
-			//Delete the lockpicking display
-			scrLockPickGen.DeleteDisplay();
+		else{
+			//Controlling the pins on the lock
+			if( !(Input.GetKey(KeyCode.M) || scrLockPickGen.lockSolved) ){
+				//Check if user wants to move onto the next pin (not sure if to punish them for mistakes or prevent them from moving on).
+					//Right now, it just requires the user to have it right in order to move on
+				if(Input.GetKey(KeyCode.E)){
+					if(scrLockPickGen.IsPinSolved(lockPinIndex)){
+						//If we've solved the last pin, then exit the lock and award points
+						if(++lockPinIndex == 5 + (int)(scrLockPickGen.difficulty * 1.5)){
+							scrLockPickGen.lockSolved = true;
+							return;
+						}
+					}
+				}
 
-			//Delete the chest
-			GameObject.Destroy(recentChest);
+				//If user wants to move pin upwards
+				if((scrLockPickGen.objLockPins[lockPinIndex].transform.position.y <=
+				   scrLockPickGen.objBackground.transform.position.y + 1.1f)
+					&& (Input.GetKey(KeyCode.W))){
+					scrLockPickGen.objLockPins[lockPinIndex].transform.position = 
+						new Vector3(scrLockPickGen.objLockPins[lockPinIndex].transform.position.x, 
+						            scrLockPickGen.objLockPins[lockPinIndex].transform.position.y + 0.0625f,
+						            scrLockPickGen.objLockPins[lockPinIndex].transform.position.z);
+				}
+				//Current pin will always be moving downwards (while not in its initial position)
+				else if(scrLockPickGen.objLockPins[lockPinIndex].transform.position.y > 
+				        scrLockPickGen.objBackground.transform.position.y){
+					scrLockPickGen.objLockPins[lockPinIndex].transform.position = 
+						new Vector3(scrLockPickGen.objLockPins[lockPinIndex].transform.position.x, 
+						            scrLockPickGen.objLockPins[lockPinIndex].transform.position.y - 0.03125f,
+						            scrLockPickGen.objLockPins[lockPinIndex].transform.position.z);
+				}
+			}
 
-			//Allow movement again
-			allowMovement();
+			//Player has successfully completed the lock picking, or has given up. Award no points for the latter
+			else if(Input.GetKey(KeyCode.M) || scrLockPickGen.lockSolved){
+				//Delete the lockpicking display
+				scrLockPickGen.DeleteDisplay();
+
+				//Delete the chest
+				GameObject.Destroy(recentChest);
+
+				//Allow movement again
+				allowMovement();
+
+				//If the lock was solved, then award points
+				if(scrLockPickGen.lockSolved)
+					scrScore.IncreaseScore(scrLockPickGen.difficulty + 5);
+				
+				//Reset pin index and lockSolved
+				lockPinIndex = 0;
+				scrLockPickGen.lockSolved = false;
+			}
 		}
 	}
 	
@@ -148,7 +202,7 @@ public class CharController : MonoBehaviour {
 				//Generate the display for lockpicking
 				scrLockPickGen.GenerateDisplay();
 
-				//Suspend movement--movmement is allowed when the player has picked the lock or if user presses
+				//Suspend movement--movmement is allowed when the player has picked the lock or if user has pressed
 					// the 'M' key
 				suspendMovement();
 			}
