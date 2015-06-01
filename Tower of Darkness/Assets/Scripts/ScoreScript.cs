@@ -6,9 +6,11 @@ public class ScoreScript : MonoBehaviour {
 	public static float playerScore;
 	GUIStyle style = new GUIStyle();
 	Vector3 previousPosition;
+	LockPickingGenerator scrLockPickGen;
 
 	void Start() {
 		playerScore = 0;
+		scrLockPickGen = GameObject.FindGameObjectWithTag ("Tower").GetComponent<LockPickingGenerator> ();
 	}
 
 	void Update () 
@@ -34,6 +36,8 @@ public class ScoreScript : MonoBehaviour {
 		style.normal.textColor = Color.white;
 		style.font = (Font)Resources.Load("Something Strange");
 		GUI.Label (new Rect (20, 20, 100, 30), "Score: " + (int)(playerScore * 100),style);
+		style.fontSize = 20;
+		GUI.Label (new Rect (20, 100, 100, 30), "Durability: " + (int)(scrLockPickGen.durability),style);
 	}
 
 	public static int getScore(){

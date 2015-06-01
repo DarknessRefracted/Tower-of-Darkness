@@ -16,7 +16,7 @@ public class CharController : MonoBehaviour {
 	//Score script
 	public ScoreScript scrScore;
 
-	//Getting the lock picking stuffs
+	//Getting/handling the lock picking stuffs
 	private GameObject tower;
 
 	//The treasure chest most recently touched
@@ -51,6 +51,7 @@ public class CharController : MonoBehaviour {
 	void Start(){
 		scriptCollision = GetComponent<DirectionalCollision>();
 		//rigidbody2D = GetComponent<Rigidbody2D>();
+
 		tower = GameObject.FindGameObjectWithTag ("Tower");
 		scrLockPickGen = tower.GetComponent<LockPickingGenerator> ();
 		scrHealth = (PlayerHealth)GetComponent<PlayerHealth> ();
@@ -82,7 +83,7 @@ public class CharController : MonoBehaviour {
 				if(Input.GetKey(KeyCode.E)){
 					if(scrLockPickGen.IsPinSolved(lockPinIndex)){
 						//If we've solved the last pin, then exit the lock and award points
-						if(++lockPinIndex == 5 + (int)(scrLockPickGen.difficulty * 1.5)){
+						if(++lockPinIndex == 5 + (int)(scrLockPickGen.difficulty * 3.5)){
 							scrLockPickGen.lockSolved = true;
 							return;
 						}
@@ -95,21 +96,23 @@ public class CharController : MonoBehaviour {
 					&& (Input.GetKey(KeyCode.W))){
 					scrLockPickGen.objLockPins[lockPinIndex].transform.position = 
 						new Vector3(scrLockPickGen.objLockPins[lockPinIndex].transform.position.x, 
-						            scrLockPickGen.objLockPins[lockPinIndex].transform.position.y + 0.0625f,
+						            scrLockPickGen.objLockPins[lockPinIndex].transform.position.y + 0.02f,
 						            scrLockPickGen.objLockPins[lockPinIndex].transform.position.z);
+					scrLockPickGen.durability -= (int)Time.deltaTime / 6;
 				}
 				//Current pin will always be moving downwards (while not in its initial position)
 				else if(scrLockPickGen.objLockPins[lockPinIndex].transform.position.y > 
 				        scrLockPickGen.objBackground.transform.position.y){
 					scrLockPickGen.objLockPins[lockPinIndex].transform.position = 
 						new Vector3(scrLockPickGen.objLockPins[lockPinIndex].transform.position.x, 
-						            scrLockPickGen.objLockPins[lockPinIndex].transform.position.y - 0.03125f,
+						            scrLockPickGen.objLockPins[lockPinIndex].transform.position.y - 0.04f,
 						            scrLockPickGen.objLockPins[lockPinIndex].transform.position.z);
 				}
 			}
 
-			//Player has successfully completed the lock picking, or has given up. Award no points for the latter
-			else if(Input.GetKey(KeyCode.M) || scrLockPickGen.lockSolved){
+			//Player has successfully completed the lock picking, has broken the pick, or has given up.
+				// Award points only if the first is true.
+			else if(Input.GetKey(KeyCode.M) || scrLockPickGen.lockSolved || scrLockPickGen.durability <= 0){
 				//Delete the lockpicking display
 				scrLockPickGen.DeleteDisplay();
 

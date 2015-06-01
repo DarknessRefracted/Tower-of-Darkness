@@ -7,12 +7,11 @@ public class PlayerHealth : MonoBehaviour {
 	Slider healthBar;
 	GameObject player;
 	public CharController scriptController;
-	public MazeSolver solverScript;
+
 	// Use this for initialization
 	void Start () {
 		GameObject temp = GameObject.Find ("HealthBar");
 		player = GameObject.FindWithTag ("Player");
-		//solverScript = (MazeSolver)GameObject.FindWithTag ("Tower").GetComponent ("MazeSolver");
 		scriptController = player.GetComponent<CharController>();
 		if (temp != null) {
 			healthBar = temp.GetComponent<Slider>();
