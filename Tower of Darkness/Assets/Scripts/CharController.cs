@@ -31,6 +31,8 @@ public class CharController : MonoBehaviour {
 
 	//Script for Lock Picking Interface
 	public LockPickingGenerator scrLockPickGen;
+	//Integer to hold index of other damage indicator
+	int otherIndicator;
 
 	//Script for health
 	public PlayerHealth scrHealth;
@@ -76,21 +78,45 @@ public class CharController : MonoBehaviour {
 			handleMovement();
 		}
 		else{
+			//Let the damage indicator not in use ease down a bit
+			if(scrLockPickGen.indicatorIndex == 0)
+				otherIndicator = 1;
+			else
+				otherIndicator = 0;
+
+			if(scrLockPickGen.objDamageLevel[otherIndicator].transform.position.y > scrLockPickGen.levelInitialY){
+				scrLockPickGen.objDamageLevel[otherIndicator].transform.position = 
+					new Vector3(scrLockPickGen.objDamageLevel[otherIndicator].transform.position.x, 
+					            scrLockPickGen.objDamageLevel[otherIndicator].transform.position.y - 0.005f,
+					            scrLockPickGen.objDamageLevel[otherIndicator].transform.position.z);
+			}
+			
+			//If the user wants to switch damage indicators
+			if(Input.GetKeyDown(KeyCode.Q) ){
+				if(scrLockPickGen.indicatorIndex == 0)
+					scrLockPickGen.indicatorIndex = 1;
+				else
+					scrLockPickGen.indicatorIndex = 0;
+			}
+
 			//Controlling the pins on the lock
-			if( !(Input.GetKey(KeyCode.M) || scrLockPickGen.lockSolved) ){
+			if( !(Input.GetKey(KeyCode.M) || (scrLockPickGen.lockSolved) 
+			      || scrLockPickGen.objDamageLevel[scrLockPickGen.indicatorIndex].transform.position.y 
+			      		>= scrLockPickGen.objDamageMax[scrLockPickGen.indicatorIndex].transform.position.y) 
+			   ){
 				//Check if user wants to move onto the next pin (not sure if to punish them for mistakes or prevent them from moving on).
 					//Right now, it just requires the user to have it right in order to move on
 				if(Input.GetKey(KeyCode.E)){
 					if(scrLockPickGen.IsPinSolved(lockPinIndex)){
 						//If we've solved the last pin, then exit the lock and award points
-						if(++lockPinIndex == 5 + (int)(scrLockPickGen.difficulty * 3.5)){
+						if(++lockPinIndex == 5 + (int)(scrLockPickGen.difficulty * 1.75)){
 							scrLockPickGen.lockSolved = true;
 							return;
 						}
 					}
 				}
 
-				//If user wants to move pin upwards
+				//If user wants to move pin upwards, move it and the damage level indicator at the correct index
 				if((scrLockPickGen.objLockPins[lockPinIndex].transform.position.y <=
 				   scrLockPickGen.objBackground.transform.position.y + 1.1f)
 					&& (Input.GetKey(KeyCode.W))){
@@ -98,21 +124,37 @@ public class CharController : MonoBehaviour {
 						new Vector3(scrLockPickGen.objLockPins[lockPinIndex].transform.position.x, 
 						            scrLockPickGen.objLockPins[lockPinIndex].transform.position.y + 0.02f,
 						            scrLockPickGen.objLockPins[lockPinIndex].transform.position.z);
-					scrLockPickGen.durability -= (int)Time.deltaTime / 6;
+					scrLockPickGen.objDamageLevel[scrLockPickGen.indicatorIndex].transform.position = 
+						new Vector3(scrLockPickGen.objDamageLevel[scrLockPickGen.indicatorIndex].transform.position.x, 
+						            scrLockPickGen.objDamageLevel[scrLockPickGen.indicatorIndex].transform.position.y + (0.015f - (0.001f * (float)scrLockPickGen.difficulty)),
+						            scrLockPickGen.objDamageLevel[scrLockPickGen.indicatorIndex].transform.position.z);
 				}
 				//Current pin will always be moving downwards (while not in its initial position)
+					//The damage indicator will also ease down over time
 				else if(scrLockPickGen.objLockPins[lockPinIndex].transform.position.y > 
 				        scrLockPickGen.objBackground.transform.position.y){
 					scrLockPickGen.objLockPins[lockPinIndex].transform.position = 
 						new Vector3(scrLockPickGen.objLockPins[lockPinIndex].transform.position.x, 
 						            scrLockPickGen.objLockPins[lockPinIndex].transform.position.y - 0.04f,
 						            scrLockPickGen.objLockPins[lockPinIndex].transform.position.z);
+					scrLockPickGen.objDamageLevel[scrLockPickGen.indicatorIndex].transform.position = 
+						new Vector3(scrLockPickGen.objDamageLevel[scrLockPickGen.indicatorIndex].transform.position.x, 
+						            scrLockPickGen.objDamageLevel[scrLockPickGen.indicatorIndex].transform.position.y - 0.005f,
+						            scrLockPickGen.objDamageLevel[scrLockPickGen.indicatorIndex].transform.position.z);
+				}
+				else if(scrLockPickGen.objDamageLevel[scrLockPickGen.indicatorIndex].transform.position.y > scrLockPickGen.levelInitialY){
+					scrLockPickGen.objDamageLevel[scrLockPickGen.indicatorIndex].transform.position = 
+						new Vector3(scrLockPickGen.objDamageLevel[scrLockPickGen.indicatorIndex].transform.position.x, 
+						            scrLockPickGen.objDamageLevel[scrLockPickGen.indicatorIndex].transform.position.y - 0.005f,
+						            scrLockPickGen.objDamageLevel[scrLockPickGen.indicatorIndex].transform.position.z);
 				}
 			}
 
 			//Player has successfully completed the lock picking, has broken the pick, or has given up.
 				// Award points only if the first is true.
-			else if(Input.GetKey(KeyCode.M) || scrLockPickGen.lockSolved || scrLockPickGen.durability <= 0){
+			else/*(Input.GetKey(KeyCode.M) || scrLockPickGen.lockSolved 
+			        || scrLockPickGen.objDamageLevel.transform.position.y == scrLockPickGen.objDamageMax.transform.position.y)*/
+				{
 				//Delete the lockpicking display
 				scrLockPickGen.DeleteDisplay();
 
@@ -123,12 +165,16 @@ public class CharController : MonoBehaviour {
 				allowMovement();
 
 				//If the lock was solved, then award points
-				if(scrLockPickGen.lockSolved)
+				if(scrLockPickGen.lockSolved){
 					scrScore.IncreaseScore(scrLockPickGen.difficulty + 5);
+					//Increment the difficulty level by one
+					scrLockPickGen.difficulty++;
+				}
 				
-				//Reset pin index and lockSolved
+				//Reset pin index, damage indicator, and lockSolved
 				lockPinIndex = 0;
 				scrLockPickGen.lockSolved = false;
+				scrLockPickGen.indicatorIndex = 0;
 			}
 		}
 	}

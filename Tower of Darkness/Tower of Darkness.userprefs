@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CharController.cs">
     <Files>
-      <File FileName="Assets\Scripts\LockPickingGenerator.cs" Line="107" Column="20" />
-      <File FileName="Assets\Scripts\CharController.cs" Line="101" Column="58" />
+      <File FileName="Assets\Scripts\LockPickingGenerator.cs" Line="92" Column="40" />
+      <File FileName="Assets\Scripts\CharController.cs" Line="177" Column="39" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
